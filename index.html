@@ -1,107 +1,142 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đang bảo trì - Sẽ sớm quay lại!</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hệ thống đang bảo trì</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --bg: #0f172a;
+      --primary: #3b82f6;
+      --text: #e2e8f0;
+      --text-light: #94a3b8;
+    }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80') no-repeat center center/cover;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .maintenance-container {
-            max-width: 800px;
-            padding: 40px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(45deg, #ff9800, #f44336);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .container {
+      max-width: 600px;
+      animation: fadeIn 1.2s ease-out;
+    }
 
-        p {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .icon {
-            font-size: 6rem;
-            margin-bottom: 20px;
-            color: #ff9800;
-        }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
 
-        .loader {
-            margin: 40px auto;
-            width: 80px;
-            height: 80px;
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            border-top: 6px solid #ff9800;
-            border-radius: 50%;
-            animation: spin 1.2s linear infinite;
-        }
+    .icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      animation: pulse 2s infinite;
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    .countdown {
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
 
-        footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            p { font-size: 1.2rem; }
-            .icon { font-size: 4.5rem; }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2.5rem; }
+      .icon { font-size: 4rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="maintenance-container">
-        <div class="icon">
-            <i class="fas fa-tools"></i>
-        </div>
-        <h1>Đang bảo trì & nâng cấp</h1>
-        <p>Chúng tôi đang cải thiện trải nghiệm để mang đến dịch vụ tốt hơn cho bạn.<br>
-        Website sẽ sớm quay trở lại với diện mạo mới!</p>
-        
-        <div class="loader"></div>
-        
-        <p>Xin lỗi vì sự bất tiện này. Cảm ơn bạn đã kiên nhẫn chờ đợi!</p>
+  <div class="container">
+    <div class="icon">🔧</div>
+    <h1>Hệ thống đang bảo trì & nâng cấp</h1>
+    <p>
+      Chúng tôi đang thực hiện nâng cấp để mang đến trải nghiệm tốt hơn, an toàn hơn và nhanh hơn cho bạn.<br>
+      Rất xin lỗi vì sự bất tiện này!
+    </p>
+    <p>Thời gian hoàn thành: <strong>Chưa ấn định chính xác</strong><br>
+       Dự kiến sẽ sớm quay lại trong vài giờ tới.</p>
 
-        <footer>
-            © 2025 Tên công ty / Website của bạn. All rights reserved.
-        </footer>
+    <div class="countdown" id="countdown">
+      Vui lòng quay lại sau...
     </div>
+
+    <footer>
+      © 2025 Tên công ty / dự án của bạn. Mọi thắc mắc xin liên hệ admin.
+    </footer>
+  </div>
+
+  <script>
+    // Tùy chọn: hiển thị đồng hồ đếm ngược (ví dụ 4 tiếng nữa)
+    // Nếu không biết chính xác thời gian, có thể để thông báo như hiện tại
+
+    const countdownEl = document.getElementById('countdown');
+
+    // Nếu bạn muốn bật đồng hồ đếm ngược, bỏ comment 2 dòng dưới và đặt thời gian mong muốn
+    // const targetTime = new Date().getTime() + (4 * 60 * 60 * 1000); // +4 tiếng
+    // setInterval(() => updateCountdown(targetTime), 1000);
+
+    function updateCountdown(target) {
+      const now = new Date().getTime();
+      const distance = target - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = 'Hệ thống đã sẵn sàng! Đang tải lại trang...';
+        setTimeout(() => location.reload(), 3000);
+        return;
+      }
+
+      const hours = Math.floor(distance / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `Dự kiến quay lại sau: ${hours}h ${minutes}p ${seconds}s`;
+    }
+
+    // Hiện tại để thông báo chung chung (vì chưa ấn định ngày hoàn thành)
+    countdownEl.innerHTML = 'Đang nỗ lực hoàn thành sớm nhất có thể...';
+  </script>
 </body>
 </html>
