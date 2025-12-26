@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance Checklist</title>
+
+<style>
+:root{
+  --bg:#0d1117;
+  --card:#161b22;
+  --text:#e6edf3;
+  --muted:#8b949e;
+  --accent:#2f81f7;
+  --danger:#f85149;
+  --success:#3fb950;
+}
+
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  padding:20px;
+  border-bottom:1px solid #21262d;
+}
+
+header h1{
+  margin:0;
+  font-size:20px;
+}
+
+header p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.container{
+  padding:16px;
+  max-width:900px;
+  margin:auto;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid #21262d;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.card h2{
+  font-size:16px;
+  margin:0 0 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.badge{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:#30363d;
+  color:#fff;
+}
+
+.badge.danger{background:var(--danger)}
+.badge.success{background:var(--success)}
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px dashed #30363d;
+}
+
+li:last-child{border-bottom:none}
+
+input[type=checkbox]{
+  margin-top:3px;
+  transform:scale(1.2);
+}
+
+small{
+  color:var(--muted);
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  padding:20px 0;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛠 Maintenance & Upgrade Checklist</h1>
+  <p>Checklist an toàn khi bảo trì / nâng cấp hệ thống – web – app – blockchain</p>
+</header>
+
+<div class="container">
+
+  <!-- 1 -->
+  <div class="card">
+    <h2>1️⃣ Chuẩn bị trước khi bảo trì <span class="badge danger">QUAN TRỌNG</span></h2>
+    <ul>
+      <li><input type="checkbox">Backup Database (Firebase / SQL / JSON / Blockchain state)</li>
+      <li><input type="checkbox">Backup Source Code (Git commit / tag)</li>
+      <li><input type="checkbox">Lưu file cấu hình (.env, API key, private key)</li>
+      <li><input type="checkbox">Lưu Smart Contract (ABI, Bytecode, Address)</li>
+      <li><input type="checkbox"><b>Không backup → Không nâng cấp</b></li>
+    </ul>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <h2>2️⃣ Phạm vi & môi trường</h2>
+    <ul>
+      <li><input type="checkbox">Xác định nâng UI/UX hay Logic</li>
+      <li><input type="checkbox">Có thay đổi Database Schema</li>
+      <li><input type="checkbox">Nâng Contract hay chỉ Frontend</li>
+      <li><input type="checkbox">Ảnh hưởng user online</li>
+      <li><input type="checkbox">Chuẩn bị Dev / Staging / Testnet</li>
+      <li><input type="checkbox">Test UI Mobile & Desktop</li>
+    </ul>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <h2>3️⃣ Thông báo & kiểm soát truy cập</h2>
+    <ul>
+      <li><input type="checkbox">Bật Maintenance Page</li>
+      <li><input type="checkbox">Disable đăng nhập / giao dịch / ghi dữ liệu</li>
+      <li><input type="checkbox">Ẩn nút submit / chặn ghi Firebase</li>
+      <li><input type="checkbox">Thông báo thời gian bảo trì cho user</li>
+      <li><input type="checkbox">Cam kết an toàn dữ liệu</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <h2>4️⃣ Blockchain / Token / Contract <span class="badge">WEB3</span></h2>
+    <ul>
+      <li><input type="checkbox">KHÔNG sửa contract đã deploy</li>
+      <li><input type="checkbox">KHÔNG renounce ownership sớm</li>
+      <li><input type="checkbox">Dùng Proxy (Upgradeable)</li>
+      <li><input type="checkbox">Hoặc deploy contract mới + migrate</li>
+      <li><input type="checkbox">Kiểm tra mint / burn / bridge</li>
+    </ul>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <h2>5️⃣ Post-check & Go Live</h2>
+    <ul>
+      <li><input type="checkbox">Test login / CRUD / API / Contract</li>
+      <li><input type="checkbox">Kiểm tra Firebase rules & quyền truy cập</li>
+      <li><input type="checkbox">Gỡ Maintenance Mode</li>
+      <li><input type="checkbox">Theo dõi error / hiệu năng / user</li>
+      <li><input type="checkbox">Ghi nhận lỗi & bài học</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  ✔ Checklist lưu tự động · Phù hợp Web · Firebase · Blockchain · ERC20
+</div>
+
+<script>
+const boxes = document.querySelectorAll("input[type=checkbox]");
+boxes.forEach((box,i)=>{
+  box.checked = localStorage.getItem("ck_"+i)==="1";
+  box.addEventListener("change",()=>{
+    localStorage.setItem("ck_"+i, box.checked?"1":"0");
+  });
+});
+</script>
+
+</body>
+</html>
