@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance Explorer</title>
+
+<link rel="icon" href="https://raw.githubusercontent.com/lapgia57-netizen/maintenance/main/favicon.ico">
+
+<style>
+:root{
+  --bg:#0d1117;
+  --panel:#161b22;
+  --card:#21262d;
+  --border:#30363d;
+  --accent:#f85149;
+  --text:#c9d1d9;
+  --muted:#8b949e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* ===== LOADING OVERLAY ===== */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#010409;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity .4s ease, visibility .4s;
+}
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+.spinner{
+  width:48px;
+  height:48px;
+  border:4px solid #30363d;
+  border-top-color:var(--accent);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-bottom:14px;
+}
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+#loader span{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* Header */
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#010409;
+  border-bottom:2px solid var(--accent);
+  padding:14px;
+  text-align:center;
+}
+header h1{
+  margin:0;
+  font-size:20px;
+  color:var(--accent);
+}
+header p{
+  margin:4px 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Search */
+.search-box{
+  padding:12px;
+  background:var(--panel);
+}
+.search-box input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:white;
+  font-size:15px;
+}
+
+/* File list */
+.list{
+  padding:10px;
+  padding-bottom:60px;
+}
+.item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  transition:.15s;
+}
+.item:hover{
+  border-color:var(--accent);
+}
+.icon{font-size:22px}
+.name{
+  flex:1;
+  font-size:15px;
+  word-break:break-all;
+}
+.path{
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* Footer */
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#010409;
+  border-top:1px solid var(--border);
+  padding:10px 14px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+}
+.badge{
+  background:#238636;
+  color:white;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== LOADING ===== -->
+<div id="loader">
+  <div class="spinner"></div>
+  <span>Đang đồng bộ repository...</span>
+</div>
+
+<header>
+  <h1>🛠 Maintenance</h1>
+  <p>Explorer repo • Realtime monitor</p>
+</header>
+
+<div class="search-box">
+  <input id="search" placeholder="🔍 Tìm file, thư mục, html...">
+</div>
+
+<div class="list" id="list">
+  ⏳ Đang tải dữ liệu...
+</div>
+
+<footer>
+  <div>Online: <span class="badge" id="online">0</span></div>
+  <div id="time"></div>
+</footer>
+
+<script>
+/* ==== CẤU HÌNH ==== */
+const owner  = "lapgia57-netizen";
+const repo   = "maintenance";
+const branch = "main";
+const api    = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}?recursive=1`;
+const renderDomain = "https://mtc.lck.io.vn/";
+
+/* ==== STATE ==== */
+let lastHash = "";
+let firstLoad = true;
+
+/* ==== LOAD REPO ==== */
+async function loadRepo(){
+  try{
+    const res  = await fetch(api,{cache:"no-store"});
+    const data = await res.json();
+    if(!data.tree) return;
+
+    const hash = JSON.stringify(data.tree).length;
+    if(hash === lastHash) return;
+
+    lastHash = hash;
+    const files = data.tree.filter(f=>f.type==="blob");
+
+    document.getElementById("online").textContent =
+      files.filter(f=>f.path.startsWith("online/")).length;
+
+    renderList(files);
+
+    if(firstLoad){
+      document.getElementById("loader").classList.add("hide");
+      firstLoad = false;
+    }
+
+  }catch(e){
+    console.error(e);
+    document.getElementById("loader").classList.add("hide");
+  }
+}
+
+/* ==== RENDER ==== */
+function renderList(files){
+  const list = document.getElementById("list");
+  list.innerHTML="";
+  files.forEach(f=>{
+    const div = document.createElement("div");
+    div.className="item";
+    div.dataset.name = f.path.toLowerCase();
+    const isHTML = f.path.endsWith(".html");
+    div.innerHTML = `
+      <div class="icon">${isHTML?"🌐":"📄"}</div>
+      <div class="name">
+        ${f.path.split("/").pop()}
+        <div class="path">${f.path}</div>
+      </div>`;
+    div.onclick = ()=>openFile(f.path);
+    list.appendChild(div);
+  });
+}
+
+/* ==== OPEN FILE ==== */
+function openFile(path){
+  let url = path.endsWith(".html")
+    ? renderDomain + path
+    : `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
+  window.open(url,"_blank");
+}
+
+/* ==== SEARCH ==== */
+document.getElementById("search").addEventListener("input",e=>{
+  const term = e.target.value.toLowerCase();
+  document.querySelectorAll(".item").forEach(i=>{
+    i.style.display = i.dataset.name.includes(term) ? "" : "none";
+  });
+});
+
+/* ==== CLOCK ==== */
+function tick(){
+  document.getElementById("time").textContent =
+    new Date().toLocaleTimeString("vi-VN");
+}
+setInterval(tick,1000);
+tick();
+
+/* ==== AUTO SYNC ==== */
+loadRepo();
+setInterval(loadRepo,30000);
+</script>
+
+</body>
+</html>
