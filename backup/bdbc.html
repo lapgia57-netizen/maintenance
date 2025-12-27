@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vibe Coding 2025 - Thả vibe, để AI lo code!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0d0d1a;
+      --text: #e0e0ff;
+      --accent: #00f0ff;
+      --accent-glow: rgba(0, 240, 255, 0.6);
+      --card: rgba(20, 20, 40, 0.7);
+      --gradient: linear-gradient(135deg, #1a0033, #000d1a, #001a33);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--gradient);
+      color: var(--text);
+      min-height: 100vh;
+      background-attachment: fixed;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00f0ff, #ff00aa, #00f0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px var(--accent-glow);
+      animation: glow 4s ease-in-out infinite alternate;
+    }
+    
+    .quote {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(0, 240, 255, 0.08);
+      border-radius: 8px;
+    }
+    
+    section {
+      margin-bottom: 4rem;
+    }
+    
+    h2 {
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    th, td {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,240,255,0.15);
+    }
+    
+    th {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent);
+    }
+    
+    .highlight {
+      color: #ff99cc;
+      font-weight: 600;
+    }
+    
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+    
+    .images img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .images img:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,240,255,0.4);
+    }
+    
+    .cta {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 5rem;
+      padding: 2rem;
+      background: rgba(0, 240, 255, 0.1);
+      border-radius: 16px;
+      border: 1px solid var(--accent);
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--accent-glow); }
+      to   { text-shadow: 0 0 30px var(--accent-glow), 0 0 50px var(--accent-glow); }
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 1.8rem; }
+      .images { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Vibe Coding 2025</h1>
+      <p style="font-size:1.3rem; opacity:0.9; margin-top:1rem;">Thả vibe – để AI lo phần code!</p>
+    </header>
+
+    <section>
+      <h2>Vibe Coding là gì?</h2>
+      <p><strong>Vibe coding</strong> (hay vibe code) là khái niệm siêu hot năm 2025 trong cộng đồng lập trình, khi AI đã mạnh đến mức... bạn gần như không cần đụng đến code nữa.</p>
+      <p>Nói đơn giản: Bạn chỉ cần mô tả ý tưởng bằng ngôn ngữ tự nhiên (tiếng Việt cũng được), rồi để AI (Cursor, Claude, Lovable, Replit Agent...) tự viết code. Chưa ưng? Chỉ cần feedback kiểu: "Làm cho nó cute hơn tí!" → AI sửa tiếp.</p>
+
+      <div class="quote">
+        "There's a new kind of coding I call 'vibe coding', where you fully give in to the vibes, embrace exponentials, and forget that the code even exists."  
+        — Andrej Karpathy (tháng 2/2025)
+      </div>
+
+      <p>Tức là buông hết, thả hồn theo cảm giác, tin AI đến mức gần như quên mất mình đang làm việc với code luôn.</p>
+    </section>
+
+    <section>
+      <h2>So sánh nhanh (2025 style)</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Kiểu lập trình</th>
+              <th>Bạn làm gì?</th>
+              <th>Độ cần biết code</th>
+              <th>Tốc độ làm dự án</th>
+              <th>Rủi ro lâu dài</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Code truyền thống</td>
+              <td>Viết tay từng dòng</td>
+              <td>10/10</td>
+              <td>Chậm</td>
+              <td>Thấp</td>
+            </tr>
+            <tr>
+              <td>AI-assisted coding</td>
+              <td>Viết + AI hỗ trợ gợi ý/sửa</td>
+              <td>7-9/10</td>
+              <td>Trung bình - nhanh</td>
+              <td>Trung bình</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Vibe coding</strong></td>
+              <td>Chỉ nói ý tưởng + feedback, <span class="highlight">không đọc code</span></td>
+              <td>0-3/10</td>
+              <td><strong>Siêu nhanh</strong></td>
+              <td><strong>Cao (rất cao)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Vibe Coding phổ biến ở đâu? (cuối 2025)</h2>
+      <ul>
+        <li>Indie maker, founder non-tech muốn làm MVP nhanh</li>
+        <li>Startup nhỏ (nhiều team YC 2025 có đến 95% code do AI sinh ra)</li>
+        <li>Người mới học code muốn "thấy sản phẩm" sớm</li>
+        <li>Một số dev lão làng dùng để prototype cực nhanh</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Nhưng drama cũng nhiều lắm...</h2>
+      <p>Nhiều người gọi vui "vibe coder" = chỉ biết prompt rồi cầu may, code rối như tơ vò, bảo trì thì khóc thét.</p>
+      <p>→ Phân hóa rõ rệt:</p>
+      <ul>
+        <li><strong>Vibe coder</strong> → nhanh nhưng mỏng, dễ chết khi scale</li>
+        <li><strong>Real engineer</strong> → hiểu sâu, biết sửa, tối ưu, bảo mật → vẫn rất hot và lương cao</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Minh họa vibe</h2>
+      <p style="text-align:center; opacity:0.9; margin-bottom:1.5rem;">Không gian coding futuristic 2025</p>
+      <div class="images">
+        <img src="https://techau.com.au/wp-content/uploads/2025/12/techAU-launch-FeatureImsage_opt.jpg" alt="Futuristic neon vibe coding aesthetic">
+        <img src="https://thumbs.dreamstime.com/b/cyberpunk-coding-laptop-futuristic-neon-room-displaying-intricate-code-desk-gaming-mouse-set-dystopian-407193386.jpg" alt="Cyberpunk coding workstation">
+        <img src="https://thumbs.dreamstime.com/b/coding-workstation-over-futuristic-cityscape-sunset-multi-monitor-glowing-code-reflections-desk-overlooking-neon-417733205.jpg" alt="Neon city coding setup">
+      </div>
+
+      <p style="text-align:center; opacity:0.9; margin:3rem 0 1.5rem;">Ví dụ app trà sữa cute theo vibe coding</p>
+      <div class="images">
+        <img src="https://cdn.dribbble.com/userupload/41994642/file/original-cb4b00cae376096ef4c63fcd0509c7f6.jpg?resize=400x0" alt="Cute bubble tea app UI">
+        <img src="https://img.freepik.com/premium-vector/flat-bubble-tea-app-design-template-set_98292-42720.jpg" alt="Pastel bubble tea app design">
+      </div>
+    </section>
+
+    <div class="cta">
+      <strong>Tóm lại:</strong> Vibe code = lập trình bằng cách thả vibe, để AI lo phần code.<br>
+      Bạn chỉ cần biết mình muốn gì + biết nhận xét "cái này chưa đúng vibe" là được.<br><br>
+      Bạn muốn thử vibe code luôn không? Hay vẫn học code chính thống trước? 😏
+    </div>
+  </div>
+</body>
+</html>
