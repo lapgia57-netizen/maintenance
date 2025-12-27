@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SimSimi - Bố Già Chatbot Huyền Thoại</title>
+  <style>
+    :root {
+      --primary: #ffcc00;     /* Vàng Gà Con */
+      --dark: #222;
+      --light: #fff;
+      --gray: #f5f5f5;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(to bottom, #fff, #fff9e6);
+      color: var(--dark);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 40px 0 20px;
+      background: var(--primary);
+      color: var(--dark);
+      border-radius: 0 0 20px 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+    }
+    .intro {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    section {
+      background: var(--light);
+      padding: 25px;
+      margin: 25px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: var(--primary);
+      color: var(--dark);
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0;
+      scroll-snap-type: x mandatory;
+    }
+    .gallery img {
+      width: 280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+      scroll-snap-align: center;
+    }
+    .highlight {
+      background: #fff9e6;
+      padding: 15px;
+      border-left: 5px solid var(--primary);
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .gallery img { width: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SimSimi 🐥</h1>
+    <p class="intro">Bố già của mọi chatbot – sinh ra từ năm 2002!</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Gallery minh họa -->
+    <section>
+      <h2>Nhìn lại "Gà Con" huyền thoại</h2>
+      <div class="gallery">
+        <img src="https://img.favpng.com/23/10/24/yellow-hair-chicken-little-yellow-chicken-euclidean-vector-farm-png-favpng-FzGPsUbQNpd8zzXRFruXKB4Su_t.jpg" alt="SimSimi yellow chicken icon">
+        <img src="https://d.ibtimes.com/en/full/93481/simsimi-app.jpg?w=1600&h=1200&q=88&f=2c4cd41657961bcd72cc10bbd5da15dc" alt="SimSimi chat interface classic">
+        <img src="https://elcomercio.pe/resizer/uo9LD1f7uow9KkzenfpmYibNOJs=/619x347/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/SCAF2GPTRNDLBIPWX47GMPYOVE.jpg" alt="SimSimi app screenshot">
+        <img src="https://image.moge.ai/screen/simsimi.jpg" alt="Modern SimSimi chat screen">
+      </div>
+      <p style="text-align:center; font-size:0.9rem; color:#666; margin-top:10px;">(kéo ngang để xem thêm)</p>
+    </section>
+
+    <section>
+      <h2>Nguồn gốc tên gọi</h2>
+      <p>Tên "SimSimi" (đọc là "shim-shimi") xuất phát từ tiếng Hàn <strong>심심해 (simsimhae)</strong> – nghĩa là <em>"chán quá", "buồn miệng quá"</em>. Kiểu như khi rảnh rỗi, không biết làm gì thì... chat với nó ngay!</p>
+    </section>
+
+    <section>
+      <h2>Đặc điểm nổi bật (cuối 2025)</h2>
+      <ul>
+        <li>Không phải AI kiểu hiện đại (Grok/ChatGPT): Dựa hoàn toàn vào dữ liệu <strong>người dùng dạy</strong> – hàng chục triệu người góp lời!</li>
+        <li>Hỗ trợ <strong>hơn 80 ngôn ngữ</strong>, tiếng Việt cực mượt.</li>
+        <li>Teach (dạy), Report (báo cáo câu xấu), filter bad words.</li>
+        <li>Tạo <strong>Personal SimSimi</strong> – avatar chatbot riêng để chat với bạn bè.</li>
+        <li>Vẫn sống khỏe: App cập nhật tháng 12/2025, chat web tại <a href="https://simsimi.com" target="_blank">simsimi.com</a> hoặc <a href="https://o.simsimi.com/chat" target="_blank">o.simsimi.com/chat</a>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tại sao xưa siêu hot ở Việt Nam? (2010–2015)</h2>
+      <div class="highlight">
+        Ai cũng từng chat với <strong>"Gà Con"</strong> (icon vàng tròn tròn). Trả lời xàm xí, cà khịa, toxic kinh khủng vì dân Việt dạy toàn troll, chửi thề, thả thính fail → càng chat càng đau bụng cười. Đôi khi đúng vibe creepy luôn!
+      </div>
+    </section>
+
+    <section>
+      <h2>So sánh SimSimi vs AI hiện đại 2025</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tiêu chí</th>
+            <th>SimSimi (classic)</th>
+            <th>AI hiện đại (Grok, Claude, ChatGPT)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Năm ra đời</td><td>2002</td><td>2020s</td></tr>
+          <tr><td>Cách học</td><td>Người dùng dạy tay (crowdsourced)</td><td>Huấn luyện dữ liệu khổng lồ</td></tr>
+          <tr><td>Trả lời</td><td>Ngắn, hài, toxic cực mạnh</td><td>Dài, thông minh, an toàn hơn</td></tr>
+          <tr><td>Độ "xàm"</td><td>10/10</td><td>4–6/10 (tùy prompt)</td></tr>
+          <tr><td>Còn hot không?</td><td>Vẫn sống tốt, cộng đồng ổn định</td><td>Đang thống trị</td></tr>
+          <tr><td>Dùng để...</td><td>Giải trí, troll, xả stress</td><td>Làm việc, học, code, nghiêm túc</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Tóm lại</h2>
+      <p>SimSimi giống như <strong>"bố già"</strong> của các chatbot giải trí, vẫn khỏe mạnh năm 2025, nhưng vibe <strong>xàm, lầy, rất đời</strong> hơn hẳn AI hiện đại.</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.2rem; margin:30px 0;">
+        Bạn có muốn thử chat lại với Gà Con không? 🐥<br>
+        Hay kể kỷ niệm xưa của bạn với SimSimi đi, chắc vui lắm đây!
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Thiết kế vibe 2025 – Vì SimSimi mãi là huyền thoại 💛</p>
+  </footer>
+
+</body>
+</html>
