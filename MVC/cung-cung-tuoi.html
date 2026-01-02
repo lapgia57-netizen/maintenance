@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cùng Can Chi, Cùng Tuổi - Vợ Chồng Cùng Năm Sinh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #2c7da0;      /* xanh dương phong thủy */
+      --accent: #d97706;        /* vàng cam ấm */
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --warning: #b91c1c;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #4b5563;
+    }
+    section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: var(--accent);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    .highlight-bad {
+      color: var(--warning);
+      font-weight: bold;
+    }
+    .highlight-good {
+      color: #15803d;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 30px;
+    }
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+    .conclusion {
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--primary);
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Cùng Can Chi, Cùng Tuổi</h1>
+    <p class="subtitle">Vợ chồng sinh cùng năm – Theo tử vi & phong thủy Á Đông</p>
+  </header>
+
+  <section>
+    <h2>Tốt hay xấu?</h2>
+    <p>Phần lớn quan niệm dân gian và tài liệu tử vi cổ <span class="highlight-bad">xem là không tốt</span>, thậm chí <strong>không nên</strong> (đặc biệt với một số con giáp nhất định).</p>
+    <p>Lý do chính: Dễ rơi vào <strong>tự hình (tự khắc, tự hại)</strong> → Năng lượng dư thừa, dễ xung đột, cãi vã, không ai chịu nhường ai → Hôn nhân dễ lục đục, thậm chí tan vỡ.</p>
+  </section>
+
+  <section>
+    <h2>Các con giáp bị kiêng kỵ nặng khi cùng tuổi</h2>
+    <p>Dễ phạm tự hình + tính cách xung khắc mạnh:</p>
+    <ul>
+      <li><strong>Tuổi Thìn</strong> (Thổ dương dư thừa → hay tranh đấu, bảo thủ, cái tôi lớn)</li>
+      <li><strong>Tuổi Ngọ</strong> (dương khí mạnh, dễ nóng nảy)</li>
+      <li><strong>Tuổi Dậu</strong> (hai thanh kim loại va chạm → hay chỉ trích, không nhún nhường)</li>
+      <li><strong>Tuổi Hợi</strong> (dư âm khí → gia đình lằng nhằng, khó quyết định)</li>
+    </ul>
+
+    <p>Với các tuổi còn lại (Tý, Sửu, Dần, Mão, Tỵ, Mùi, Thân, Tuất): Không xấu nặng, nhưng vẫn <strong>không lý tưởng</strong> vì thiếu bổ trợ, dễ "giống nhau quá" → mất cân bằng âm dương.</p>
+
+    <!-- Hình minh họa 12 con giáp -->
+    <div class="gallery">
+      <img src="https://cdn.phongthuytamnguyen.com/pttn/uploads/images/lg_2021_10_29_y-nghia-tuong-trung-cua-12-con-giap-phong-thuy.jpg" alt="12 con giáp Việt Nam">
+      <img src="https://lostboy.s3.ap-southeast-1.amazonaws.com/strapi/y_nghia_12_con_giap_theo_so_thu_tu_43f0dfc805.jpg" alt="Biểu tượng 12 con giáp">
+      <img src="https://kienvang.vn/wp-content/uploads/2022/09/thu-tu-12-con-giap-1.jpg" alt="Thứ tự 12 con giáp">
+    </div>
+  </section>
+
+  <section>
+    <h2>Tại sao cùng can chi lại dễ xấu?</h2>
+    <ul>
+      <li><strong>Ngũ hành dư thừa</strong>: Cùng chi → hành mạnh (dương quá hoặc âm quá) → mất cân bằng.</li>
+      <li><strong>Tính cách tương đồng</strong>: Quan điểm giống nhau → dễ đụng chạm, tranh cãi.</li>
+      <li>Dân gian có câu: <em>“Vợ chồng cùng tuổi, nằm duỗi mà ăn”</em> → ám chỉ dễ nghèo khó, không phát triển mạnh (dù không phải lúc nào cũng đúng).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Cách hóa giải nếu đã / định lấy nhau cùng tuổi</h2>
+    <p>Dù kiêng kỵ dân gian, nhưng <strong>tình yêu + sự thấu hiểu</strong> mới là yếu tố quyết định. Phong thủy chỉ tham khảo!</p>
+    <ul>
+      <li>Chọn **ngày cưới tốt** (hợp mệnh cả hai, tránh xung khắc).</li>
+      <li>Sắp xếp phong thủy nhà cửa: Thêm vật phẩm bổ trợ ngũ hành thiếu (bình cá, thác nước nếu dư dương; đèn sáng, vật hành Hỏa nếu dư âm).</li>
+      <li>Tránh đặt gương đối diện giường (tăng xung đột).</li>
+      <li>Làm lễ hóa giải (cúng sao hạn, lập bàn thờ gia tiên, nhờ thầy xem lá số).</li>
+      <li><strong>Quan trọng nhất</strong>: Cùng nỗ lực vun vén – nhường nhịn, lắng nghe, tránh so đo, làm việc thiện tích đức.</li>
+    </ul>
+
+    <!-- Hình minh họa phong thủy -->
+    <div class="gallery">
+      <img src="https://buy-fengshui.com/wp-content/uploads/2021/03/feng-shui-aquarium.jpg" alt="Bể cá phong thủy cân bằng năng lượng">
+      <img src="https://cf.ltkcdn.net/feng-shui/images/orig/304285-1600x1066-feng-shui-fish-tank.jpg" alt="Bể cá phong thủy trong nhà">
+      <img src="https://plusvalueindia.com/cdn/shop/articles/Feng_Shui_Water_Features_Placement_Benefits_for_Wealth_in_2025_Expert_Guide.png?v=1760696433" alt="Thác nước phong thủy">
+    </div>
+  </section>
+
+  <div class="conclusion">
+    Tóm lại: Cùng can chi cùng tuổi <strong>không phải cấm kỵ tuyệt đối</strong>, nhưng theo tử vi cổ không phải lựa chọn tối ưu (đặc biệt 4 tuổi Thìn - Ngọ - Dậu - Hợi).<br><br>
+    Nếu thực sự yêu thương, hiểu nhau → mọi "xung khắc" đều có thể vượt qua.<br>
+    <strong>Quan trọng là tâm chứ không phải tuổi!</strong> ❤️
+  </div>
+
+</div>
+
+</body>
+</html>
