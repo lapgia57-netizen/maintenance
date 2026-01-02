@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ngũ Hành Sơn - Danh Thắng Kỳ Vĩ Đà Nẵng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2c7a77;
+      --secondary: #f4a261;
+      --light: #f8f9fa;
+      --dark: #2d3436;
+      --gray: #636e72;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+                  url('https://images.unsplash.com/photo-1580130718646-9f694209b207?auto=format&fit=crop&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 100px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 0.4rem;
+    }
+    header p.subtitle {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    section {
+      padding: 80px 0;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      display: block;
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+    .highlight {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin: 2rem 0;
+    }
+    .tips {
+      background: var(--primary);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .tips ul {
+      list-style: none;
+      margin-top: 1.5rem;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tips li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      header { padding: 90px 15px 70px; }
+      section { padding: 50px 0; }
+      h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Ngũ Hành Sơn</h1>
+    <p class="subtitle">Non Nước – Marble Mountains – Quần thể núi đá vôi huyền thoại giữa lòng Đà Nẵng</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>Giới Thiệu</h2>
+    <p style="font-size:1.2rem; max-width:900px; margin:0 auto; text-align:center;">
+      Ngũ Hành Sơn (hay còn gọi là Non Nước, Marble Mountains) là một trong những danh thắng nổi tiếng nhất Đà Nẵng, Việt Nam. 
+      Quần thể gồm năm ngọn núi đá vôi (thực tế có sáu ngọn nhưng thường gọi năm) nằm độc lập theo triết lý <strong>Ngũ Hành</strong>: 
+      <strong>Kim – Mộc – Thủy – Hỏa – Thổ</strong>. Tên gọi do vua Minh Mạng đặt năm 1825. Nằm cách trung tâm Đà Nẵng khoảng 8–11 km về phía Nam, ngay cạnh bãi biển Non Nước xinh đẹp.
+    </p>
+    <p style="text-align:center; margin-top:1.5rem; font-style:italic; color:var(--gray);">
+      Dưới đây là những hình ảnh toàn cảnh hùng vĩ từ trên cao:
+    </p>
+    <div class="gallery">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/65/7c/dd/photo9jpg.jpg?w=900&h=500&s=1" alt="Toàn cảnh Ngũ Hành Sơn">
+      <img src="https://sungetawaystravel.com/wp-content/uploads/2024/07/da-nang-travel-guide-sun-getaways-travel-3.png" alt="Marble Mountains aerial">
+      <img src="https://c8.alamy.com/comp/2RT5AFH/da-nang-vietnam-march-18-view-of-marble-hills-in-ngu-hanh-son-district-vietnam-on-march-18-2015-marble-mountains-is-a-cluster-of-five-marble-an-2RT5AFH.jpg" alt="Ngũ Hành Sơn từ xa">
+      <img src="https://hiddenhoian.com/wp-content/uploads/2018/09/the-view-from-marble-mountains.jpg" alt="Panorama Marble Mountains">
+    </div>
+  </section>
+
+  <section>
+    <h2>Các Điểm Tham Quan Nổi Bật</h2>
+    <div class="highlight">
+      <strong>Thủy Sơn (núi Nước)</strong> – ngọn núi lớn nhất, đẹp nhất và được ghé thăm nhiều nhất.
+    </div>
+
+    <h3 style="text-align:center; margin:2rem 0 1rem; color:var(--primary);">Động Huyền Không</h3>
+    <p style="text-align:center; max-width:800px; margin:0 auto 2rem;">Hang động rộng lớn, thoáng đãng với ánh sáng tự nhiên xuyên qua khe đá, bàn thờ Phật linh thiêng và yên bình.</p>
+    <div class="gallery">
+      <img src="https://venusvietnamtravel.com/wp-content/uploads/2025/04/di-tich-cap-quoc-gia-dac-biet-danh-thang-ngu-hanh-son.jpg" alt="Động Huyền Không">
+      <img src="https://vietnamnomad.com/wp-content/uploads/2025/01/Huyen-Khong-Cave-Marble-Mountains-Vietnamnomad.jpg" alt="Bên trong Huyền Không Cave">
+      <img src="https://hoiandaytrip.com/wp-content/uploads/2024/11/huyen-khong-cave-3.jpg" alt="Ánh sáng Động Huyền Không">
+    </div>
+
+    <h3 style="text-align:center; margin:3rem 0 1rem; color:var(--primary);">Động Âm Phủ (Hang Địa Ngục)</h3>
+    <p style="text-align:center; max-width:800px; margin:0 auto 2rem;">Miêu tả 18 tầng địa ngục theo quan niệm Phật giáo, khá rùng rợn và huyền bí với tượng quỷ dữ, sông máu...</p>
+    <div class="gallery">
+      <img src="https://img.atlasobscura.com/ZseBVuQ2JExZ2366gaGeADMYCINRoJ9eG-ySP4Uh7sc/rs:fill:780:520:1/g:ce/c:2981:1987:nowe:0:1577/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy82ZWZh/NDdmMTBkZDM5ODUy/ZTNfSU1HXzU0MDYu/anBn.jpg" alt="Động Âm Phủ">
+      <img src="https://www.pipeaway.com/wp-content/uploads/2020/07/am-phu-cave-marble-mountain-photo-by-ivan-kralj-2.jpg" alt="Tượng quỷ Động Âm Phủ">
+      <img src="https://www.pipeaway.com/wp-content/uploads/2020/07/am-phu-cave-marble-mountain-photo-by-ivan-kralj-7.jpg" alt="Cảnh địa ngục Am Phu">
+    </div>
+
+    <div style="margin:3rem 0; text-align:center;">
+      <p>Còn nhiều điểm khác: Chùa Linh Ứng, Chùa Tam Thai, Vọng Giang Đài (ngắm toàn cảnh Đà Nẵng & biển), và nhiều hang động, chùa chiền linh thiêng.</p>
+    </div>
+
+    <h3 style="text-align:center; margin:3rem 0 1rem; color:var(--primary);">Cảnh nhìn từ đỉnh Thủy Sơn</h3>
+    <div class="gallery">
+      <img src="https://hoiandaytrip.com/wp-content/uploads/2024/11/thuy-son-mountain-peak-marble-mountain.jpg" alt="View từ đỉnh Thủy Sơn">
+      <img src="https://quangnam.thefiveresorts.vn/wp-content/uploads/2025/12/05E.jpg" alt="Panorama Đà Nẵng từ Marble Mountains">
+      <img src="https://vietnamnomad.com/wp-content/uploads/2025/01/Aerial-view-of-the-top-of-Mount-Thuy-Son-Vietnamnomad.jpg" alt="Toàn cảnh từ trên cao">
+    </div>
+  </section>
+
+  <section>
+    <h2>Làng Đá Non Nước</h2>
+    <p style="text-align:center; max-width:900px; margin:0 auto 2rem;">
+      Dưới chân núi là làng nghề điêu khắc đá mỹ nghệ truyền thống hơn 300 năm tuổi – nơi lưu giữ tinh hoa nghệ thuật đá Việt Nam.
+    </p>
+    <div class="gallery">
+      <img src="https://izitour.com/media/ckeditor/non-nuoc-village-da-nang.webp" alt="Làng đá Non Nước">
+      <img src="https://izitour.com/media/blog/non-nuoc-stone-carving-village.webp" alt="Nghệ nhân điêu khắc đá">
+    </div>
+  </section>
+
+  <section class="tips">
+    <h2>Lưu Ý Khi Tham Quan</h2>
+    <ul>
+      <li>→ Mặc quần áo thoải mái, giày thể thao vì có rất nhiều bậc thang</li>
+      <li>→ Có thang máy hiện đại nếu không muốn leo bộ</li>
+      <li>→ Thời điểm đẹp nhất: tháng 2–5 hoặc 9–10 (thời tiết mát mẻ, dễ chịu)</li>
+      <li>→ Mang nước, kem chống nắng và nón nếu đi vào buổi trưa</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <p>Ngũ Hành Sơn – Sự kết hợp hoàn hảo giữa thiên nhiên kỳ vĩ, văn hóa tâm linh và lịch sử.<br>
+  Một nơi "phải đến" khi ghé Đà Nẵng! Bạn đã từng lên đây chưa? 🌄</p>
+</footer>
+
+</body>
+</html>
