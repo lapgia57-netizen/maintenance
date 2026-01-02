@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robot Đại Chiến - Transformers Universe</title>
+  <style>
+    :root {
+      --primary: #e63946;
+      --dark: #1d1d1d;
+      --light: #f1faee;
+      --accent: #a8dadc;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #000, #111);
+      color: var(--light);
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(0,0,0,0.8);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .intro {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .movie-card {
+      background: rgba(30,30,30,0.8);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #333;
+    }
+    .movie-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(230,57,70,0.4);
+    }
+    .movie-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: top;
+    }
+    .info {
+      padding: 1.5rem;
+    }
+    .info h3 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+    .info p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    .year {
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .gallery {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    .gallery h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.4s;
+    }
+    .gallery img:hover {
+      transform: scale(1.08);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #000;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Robot Đại Chiến</h1>
+    <p>Transformers - Cuộc chiến giữa Autobots và Decepticons</p>
+  </header>
+
+  <div class="intro">
+    <p><strong>Robot Đại Chiến</strong> (tựa gốc: Transformers) là loạt phim hành động khoa học viễn tưởng nổi tiếng của Mỹ, dựa trên dòng đồ chơi Hasbro. Các robot ngoài hành tinh biến hình thành xe cộ, máy bay... chiến đấu giữa phe thiện <strong>Autobots</strong> (dẫn đầu bởi Optimus Prime) và phe ác <strong>Decepticons</strong> (dẫn đầu bởi Megatron).</p>
+    <p>Loạt phim live-action chính do Michael Bay khởi xướng, cùng các spin-off hiện đại.</p>
+  </div>
+
+  <div class="movies-grid">
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/51V9U1VGSlL._AC_UF894,1000_QL80_.jpg" alt="Transformers 2007">
+      <div class="info">
+        <h3>Robot Đại Chiến (Transformers, 2007)</h3>
+        <p class="year">2007</p>
+        <p>Phần đầu tiên, Sam Witwicky bị cuốn vào cuộc chiến vì AllSpark.</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/518R47L6eGL._AC_UF894,1000_QL80_.jpg" alt="Revenge of the Fallen">
+      <div class="info">
+        <h3>Robot Đại Chiến 2: Bại Binh Phục Hận (2009)</h3>
+        <p class="year">2009</p>
+        <p>Sam đối mặt The Fallen và cỗ máy Energon khổng lồ.</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/712wN5kdBaL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg" alt="Dark of the Moon">
+      <div class="info">
+        <h3>Robot Đại Chiến 3: Vùng Tối Của Mặt Trăng (2011)</h3>
+        <p class="year">2011</p>
+        <p>Bí mật tàu Ark trên Mặt Trăng và cuộc xâm lược Chicago.</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/61JuU7g5aLL.jpg" alt="Age of Extinction">
+      <div class="info">
+        <h3>Robot Đại Chiến 4: Kỷ Nguyên Hủy Diệt (2014)</h3>
+        <p class="year">2014</p>
+        <p>Con người săn lùng Transformers, xuất hiện Dinobots.</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img src="https://blogs-images.forbes.com/scottmendelson/files/2018/12/Quad_S-1200x674.jpg" alt="Bumblebee">
+      <div class="info">
+        <h3>Bumblebee (2018) - Tiền truyện</h3>
+        <p class="year">2018</p>
+        <p>Câu chuyện cảm động về Bumblebee năm 1987, nhận được đánh giá cao nhất.</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/711MPxWXaSL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg" alt="Rise of the Beasts">
+      <div class="info">
+        <h3>Robot Đại Chiến: Quái Thú Trỗi Dậy (2023)</h3>
+        <p class="year">2023</p>
+        <p>Giới thiệu Maximals, Predacons, Terrorcons và Unicron. (Tính đến 2026 vẫn chưa có phần mới chính thức sau phim này)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <h2>Những trận chiến kinh điển Optimus Prime vs Megatron</h2>
+    <div class="gallery-grid">
+      <img src="https://i.ytimg.com/vi/dwymlkXf9z0/sddefault.jpg" alt="Optimus vs Megatron fight">
+      <img src="https://i.ytimg.com/vi/Nbnk8LV3ohQ/maxresdefault.jpg" alt="Optimus vs Megatron trailer">
+      <img src="https://i.ytimg.com/vi/9NQ-h3FpjR8/maxresdefault.jpg" alt="One Shall Fall">
+      <img src="https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/06/Optimus-vs-Megatron-Banner.jpg?w=1600&h=900&fit=crop" alt="Epic battle">
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 - Fan-made Transformers Guide | More than meets the eye!</p>
+  </footer>
+
+</body>
+</html>
