@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ngày sinh Donald J. Trump</title>
+  <style>
+    :root {
+      --red:   #bf0a30;
+      --white: #ffffff;
+      --blue:  #002868;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, var(--blue) 0%, #001f4d 100%);
+      color: white;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 3.5rem 2.8rem;
+      max-width: 580px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .flag-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0,
+        transparent 20px,
+        rgba(255,255,255,0.15) 20px,
+        rgba(255,255,255,0.15) 40px
+      );
+      pointer-events: none;
+    }
+    h1 {
+      font-size: 3.6rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #fff, #ffd700, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.4rem;
+    }
+    .date {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--red);
+      margin: 0.3rem 0 1.2rem;
+      text-shadow: 0 3px 12px rgba(191,10,48,0.4);
+    }
+    .age {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      margin: 1.5rem 0;
+    }
+    .sources {
+      font-size: 0.95rem;
+      opacity: 0.7;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+    .star {
+      position: absolute;
+      color: white;
+      font-size: 1.2rem;
+      animation: twinkle 6s infinite;
+      pointer-events: none;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.3; transform: scale(0.8); }
+      50%     { opacity: 1;   transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="flag-bg"></div>
+    
+    <h1>Donald J. Trump</h1>
+    <div class="date">14 tháng 6 năm 1946</div>
+    
+    <p style="font-size:1.4rem; margin:1.2rem 0;">
+          Sinh ra tại Queens, New York, Mỹ<br>
+          Trùng với <strong>Flag Day</strong> – Ngày Quốc kỳ Mỹ
+    </p>
+
+    <div class="age">
+      Năm 2026: <strong>79 tuổi</strong><br>
+      <span style="font-size:1.1rem; opacity:0.85;">
+        → Sẽ tròn 80 tuổi vào ngày 14/6/2026
+      </span>
+    </div>
+
+    <div class="sources">
+      Được xác nhận bởi Wikipedia • White House • Britannica •<br>
+      và nhiều tài liệu tiểu sử chính thống
+    </div>
+  </div>
+
+  <!-- Thêm vài ngôi sao lấp lánh ngẫu nhiên -->
+  <script>
+    const card = document.querySelector('.card');
+    for(let i=0; i<12; i++){
+      let s = document.createElement('div');
+      s.className = 'star';
+      s.textContent = '★';
+      s.style.left = Math.random()*100 + '%';
+      s.style.top  = Math.random()*100 + '%';
+      s.style.animationDelay = Math.random()*5 + 's';
+      card.appendChild(s);
+    }
+  </script>
+
+</body>
+</html>
