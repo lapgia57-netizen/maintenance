@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML vs HTML5 - So sánh rõ ràng năm 2026</title>
+  <meta name="description" content="So sánh chi tiết giữa HTML4/XHTML cũ và HTML5 hiện đại (living standard 2026)"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004c99;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary-dark);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .intro {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--primary);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin: 2.5rem 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: rgba(0,102,204,0.03);
+    }
+
+    .old { color: var(--danger); font-weight: 500; }
+    .new  { color: var(--success); font-weight: 600; }
+
+    .code-example {
+      margin: 2.5rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .code-header {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 0.75rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .code-title { font-weight: 500; }
+    .badge {
+      background: #334155;
+      padding: 0.25rem 0.6rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+    }
+
+    pre {
+      margin: 0;
+      padding: 1.5rem;
+      background: #0f172a;
+      color: #e2e8f0;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .conclusion {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .conclusion h2 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    .fun-fact {
+      font-style: italic;
+      color: #475569;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table th, .comparison-table td {
+        padding: 1rem;
+      }
+      
+      h1 { font-size: 2.1rem; }
+      .intro, .conclusion { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>HTML vs HTML5<br>Năm 2026</h1>
+    <p class="subtitle">So sánh rõ ràng giữa HTML cũ (HTML4.01/XHTML) và HTML5 hiện đại (Living Standard)</p>
+  </header>
+
+  <div class="intro">
+    <strong>Thực tế quan trọng năm 2026:</strong><br>
+    HTML5 chính là HTML phiên bản hiện đại nhất – đang được cập nhật liên tục theo mô hình "living standard".<br>
+    Khi mọi người hỏi "HTML khác HTML5 thế nào?", thực chất họ muốn so sánh <strong>HTML cũ</strong> (HTML4.01 / XHTML) với <strong>HTML5 hiện đại</strong>.
+  </div>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Tiêu chí so sánh</th>
+        <th>HTML cũ (HTML4.01 / XHTML)</th>
+        <th>HTML5 hiện đại (2026)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Năm ra mắt chính thức</td>
+        <td class="old">1999 – 2000</td>
+        <td class="new">2014 (sau đó là living standard – cập nhật liên tục)</td>
+      </tr>
+      <tr>
+        <td>Doctype</td>
+        <td class="old">Dài và phức tạp<br><code>&lt;!DOCTYPE HTML PUBLIC...&gt;</code></td>
+        <td class="new">Rất đơn giản:<br><code>&lt;!DOCTYPE html&gt;</code></td>
+      </tr>
+      <tr>
+        <td>Hỗ trợ đa phương tiện</td>
+        <td class="old">Cần plugin (Flash, Silverlight...)</td>
+        <td class="new">Hỗ trợ native → <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code></td>
+      </tr>
+      <tr>
+        <td>Thẻ ngữ nghĩa (semantic)</td>
+        <td class="old">Rất ít (chủ yếu <code>&lt;div&gt;</code> + class/id)</td>
+        <td class="new">Rất phong phú: <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>...</td>
+      </tr>
+      <tr>
+        <td>Vẽ đồ họa & tương tác</td>
+        <td class="old">Cần plugin hoặc công cụ bên thứ 3</td>
+        <td class="new">Có sẵn <code>&lt;canvas&gt;</code>, SVG hỗ trợ tốt hơn</td>
+      </tr>
+      <tr>
+        <td>Lưu trữ cục bộ</td>
+        <td class="old">Chỉ cookie (~4KB)</td>
+        <td class="new">LocalStorage, SessionStorage, IndexedDB (dung lượng lớn)</td>
+      </tr>
+      <tr>
+        <td>Hỗ trợ di động/responsive</td>
+        <td class="old">Không được thiết kế cho mobile</td>
+        <td class="new">Tối ưu cho mobile, Geolocation, Touch events, media queries</td>
+      </tr>
+      <tr>
+        <td>Các thẻ bị loại bỏ/không khuyến khích</td>
+        <td>—</td>
+        <td class="new"><code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;frame&gt;</code>, <code>&lt;applet&gt;</code>, <code>&lt;big&gt;</code>...</td>
+      </tr>
+      <tr>
+        <td>Hiệu suất & SEO</td>
+        <td class="old">Kém hơn</td>
+        <td class="new">Tốt hơn rất nhiều</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="code-example">
+    <div class="code-header">
+      <span class="code-title">HTML4 kiểu cũ – nhúng video bằng Flash</span>
+      <span class="badge">Cũ – 2000s</span>
+    </div>
+    <pre><code>&lt;object type="application/x-shockwave-flash" data="video.swf"&gt;
+  &lt;param name="movie" value="video.swf"&gt;
+&lt;/object&gt;</code></pre>
+  </div>
+
+  <div class="code-example">
+    <div class="code-header">
+      <span class="code-title">HTML5 hiện đại – nhúng video native</span>
+      <span class="badge">2026 – Best Practice</span>
+    </div>
+    <pre><code>&lt;video controls width="640" height="360"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  Trình duyệt của bạn không hỗ trợ video HTML5.
+&lt;/video&gt;</code></pre>
+  </div>
+
+  <div class="code-example">
+    <div class="code-header">
+      <span class="code-title">Cấu trúc trang web semantic chuẩn HTML5 2026</span>
+      <span class="badge">Recommended</span>
+    </div>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Trang web hiện đại&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Tiêu đề website&lt;/h1&gt;
+    &lt;nav&gt;&lt;!-- menu --&gt;&lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Bài viết chính&lt;/h2&gt;
+      &lt;p&gt;Nội dung...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;© 2026 Công ty XYZ&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  <div class="conclusion">
+    <h2>Tóm lại năm 2026: Chỉ dùng HTML5!</h2>
+    <p>Tất cả trình duyệt hiện đại đều hỗ trợ xuất sắc<br>
+    HTML4 giờ chỉ còn tồn tại trong các dự án legacy cực cũ</p>
+    
+    <p class="fun-fact">
+      "Nếu code của bạn có <code>&lt;!DOCTYPE html&gt;</code> và dùng thẻ <code>&lt;video&gt;</code>, <code>&lt;canvas&gt;</code>, <code>&lt;section&gt;</code>...<br>
+      → Chúc mừng! Bạn đang code <strong>HTML5 hiện đại</strong> rồi đấy! 🚀"
+    </p>
+  </div>
+
+  <footer>
+    Cập nhật lần cuối: Tháng 01/2026 • HTML5 Living Standard
+  </footer>
+
+</div>
+</body>
+</html>
