@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>lapgia57-netizen • sống trên mạng</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0d0d0d;
+      color: #a0a0a0;
+      font-family: 'Segoe UI', system-ui, monospace;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 720px;
+      margin: 8vh auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 2.4rem;
+      color: #eee;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 4rem;
+      font-style: italic;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 1.8rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: #444;
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.03));
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+    .card:hover::before {
+      opacity: 1;
+    }
+    .card h2 {
+      color: #ccc;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      font-weight: normal;
+    }
+    .card p {
+      color: #888;
+      font-size: 0.95rem;
+    }
+    .emoji {
+      font-size: 1.8rem;
+      margin-left: 0.4rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 6rem;
+      padding: 2rem 0;
+      color: #444;
+      font-size: 0.85rem;
+      border-top: 1px solid #222;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 1.9rem; }
+      .container { margin: 5vh auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>lapgia57-netizen</h1>
+    <div class="tagline">
+      Không gian dành cho những người dùng mạng biết suy nghĩ trước khi comment.<br>
+      Chúng ta không chỉ lướt mạng, chúng ta đang sống trên mạng.
+    </div>
+
+    <div class="status-grid">
+
+      <div class="card">
+        <h2>maintenance <span class="emoji">🛠️</span></h2>
+        <p>Bảo trì nâng cấp.<br>Cuộc đời version 2.0 đang load... (chờ tí nhé)</p>
+      </div>
+
+      <div class="card">
+        <h2>LCP <span class="emoji">🖥️😔</span></h2>
+        <p>Chờ tại quán net :(<br>Largest Contentful Pain vẫn chưa xuất hiện sau 10 năm.</p>
+      </div>
+
+      <div class="card">
+        <h2>gohome <span class="emoji">🏠🚂</span></h2>
+        <p>Tháng về một lần.<br>OR NO.<br>(thực tế là no luôn thì có sao đâu)</p>
+      </div>
+
+      <div class="card">
+        <h2>blockchain <span class="emoji">⛓️⏳</span></h2>
+        <p>synchronization.<br>Đồng bộ thời gian.<br>Đời mình vẫn đang pending transaction từ 2017.</p>
+      </div>
+
+      <div class="card">
+        <h2>Sala <span class="emoji">🙏</span></h2>
+        <p>SRY<br>Sorry vì đã sống thật quá trên mạng.<br>Không cố ý làm phiền.</p>
+      </div>
+
+    </div>
+
+    <footer>
+      © 2026 • lapgia57-netizen • Đang chờ đồng bộ với thực tại...
+    </footer>
+  </div>
+
+</body>
+</html>
