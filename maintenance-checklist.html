@@ -1,196 +1,367 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maintenance Checklist</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CHECKLIST BẢO TRÌ & NÂNG CẤP HỆ THỐNG NHÀ MÁY LỚN 2026</title>
 
 <style>
-:root{
-  --bg:#0d1117;
-  --card:#161b22;
-  --text:#e6edf3;
-  --muted:#8b949e;
-  --accent:#2f81f7;
-  --danger:#f85149;
-  --success:#3fb950;
-}
+  :root {
+    --bg: #0a0e14;              /* Deep charcoal - êm mắt hơn */
+    --card: #11171f;            /* Card nền hơi sáng hơn một chút */
+    --text: #f0f4f8;            /* Text sáng nhẹ, dễ đọc */
+    --muted: #9ca3af;           /* Muted text hiện đại */
+    --accent: #00d4ff;          /* Cyan neon - công nghệ cao, OT/IT vibe */
+    --accent-dark: #0096c7;     /* Hover/Active */
+    --danger: #ff4d4f;          /* Red tươi, cảnh báo mạnh */
+    --warning: #ffa940;         /* Orange ấm, ít chói */
+    --success: #36d399;         /* Green teal - tươi mới, thành công */
+    --critical: #f5222d;        /* Critical đỏ đậm */
+    --border: #1f2937;
+    --shadow: 0 4px 15px rgba(0, 212, 255, 0.12);
+  }
 
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
 
-header{
-  padding:20px;
-  border-bottom:1px solid #21262d;
-}
+  header {
+    background: linear-gradient(135deg, #0a0e14 0%, #0f1622 100%);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
 
-header h1{
-  margin:0;
-  font-size:20px;
-}
+  header h1 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.5px;
+  }
 
-header p{
-  margin:6px 0 0;
-  color:var(--muted);
-  font-size:14px;
-}
+  header p {
+    color: var(--muted);
+    font-size: clamp(1rem, 4vw, 1.15rem);
+    max-width: 720px;
+    margin: 0 auto;
+  }
 
-.container{
-  padding:16px;
-  max-width:900px;
-  margin:auto;
-}
+  .container {
+    max-width: 1180px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+  }
 
-.card{
-  background:var(--card);
-  border:1px solid #21262d;
-  border-radius:12px;
-  padding:16px;
-  margin-bottom:16px;
-}
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
 
-.card h2{
-  font-size:16px;
-  margin:0 0 10px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.18);
+  }
 
-.badge{
-  font-size:11px;
-  padding:3px 8px;
-  border-radius:999px;
-  background:#30363d;
-  color:#fff;
-}
+  .card-header {
+    padding: 1.4rem 2rem;
+    background: linear-gradient(to right, #0a0e14, #11171f);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
 
-.badge.danger{background:var(--danger)}
-.badge.success{background:var(--success)}
+  .card-header h2 {
+    font-size: 1.45rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
 
-ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
+  .badge {
+    font-size: 0.82rem;
+    padding: 0.4em 1em;
+    border-radius: 2em;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
 
-li{
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  padding:8px 0;
-  border-bottom:1px dashed #30363d;
-}
+  .badge-critical { background: var(--critical); color: white; }
+  .badge-danger   { background: var(--danger);   color: white; }
+  .badge-warning  { background: var(--warning);  color: #111; }
+  .badge-success  { background: var(--success);  color: #000; }
 
-li:last-child{border-bottom:none}
+  .list {
+    padding: 0.8rem 2rem 2rem;
+  }
 
-input[type=checkbox]{
-  margin-top:3px;
-  transform:scale(1.2);
-}
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px dashed var(--border);
+    transition: background 0.2s;
+  }
 
-small{
-  color:var(--muted);
-}
+  .item:hover {
+    background: rgba(0, 212, 255, 0.06);
+    border-radius: 8px;
+  }
 
-.footer{
-  text-align:center;
-  font-size:12px;
-  color:var(--muted);
-  padding:20px 0;
-}
+  .item:last-child { border-bottom: none; }
+
+  .item input[type="checkbox"] {
+    margin-top: 0.4rem;
+    transform: scale(1.5);
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .item label {
+    flex: 1;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .item .desc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-top: 0.4rem;
+    display: block;
+    line-height: 1.4;
+  }
+
+  .new-item {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .card-header { flex-direction: column; align-items: flex-start; }
+    .list { padding: 0.8rem 1.4rem 1.8rem; }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🛠 Maintenance & Upgrade Checklist</h1>
-  <p>Checklist an toàn khi bảo trì / nâng cấp hệ thống – web – app – blockchain</p>
+  <h1>🛡️ CHECKLIST BẢO TRÌ & NÂNG CẤP HỆ THỐNG NHÀ MÁY LỚN 2026</h1>
+  <p>IT/OT Convergence • SCADA • PLC • DCS • MES • ERP • IIoT • Zero Trust OT • IEC 62443-2-1/4-2 • NIST CSF 2.0 • Change Management nghiêm ngặt • Minimal Downtime</p>
 </header>
 
 <div class="container">
 
   <!-- 1 -->
   <div class="card">
-    <h2>1️⃣ Chuẩn bị trước khi bảo trì <span class="badge danger">QUAN TRỌNG</span></h2>
-    <ul>
-      <li><input type="checkbox">Backup Database (Firebase / SQL / JSON / Blockchain state)</li>
-      <li><input type="checkbox">Backup Source Code (Git commit / tag)</li>
-      <li><input type="checkbox">Lưu file cấu hình (.env, API key, private key)</li>
-      <li><input type="checkbox">Lưu Smart Contract (ABI, Bytecode, Address)</li>
-      <li><input type="checkbox"><b>Không backup → Không nâng cấp</b></li>
-    </ul>
+    <div class="card-header">
+      <h2>1. Chuẩn bị & Lập kế hoạch (Change Advisory Board - CAB)</h2>
+      <span class="badge badge-critical">RẤT QUAN TRỌNG</span>
+    </div>
+    <div class="list">
+      <div class="item">
+        <input type="checkbox" id="c1">
+        <label for="c1">
+          Thành lập Change Request chính thức & được CAB phê duyệt (ít nhất 3 thành viên: OT, IT, Production)
+          <span class="desc">Phải có MOP chi tiết, Backout Plan, Risk Assessment (FMEA-style), Rollback time estimation</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c2">
+        <label for="c2">
+          Backup full-stack: PLC (offline + online), SCADA/HMI (application + runtime), Historian (full dump + incremental), MES/ERP DB, OT network config (VLAN, ACL, firewall rules)
+          <span class="desc">Lưu ít nhất 2 bản: local + offsite/air-gapped</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c3">
+        <label for="c3">
+          Backup IT layer: Source code (Git/repo), Database (full + transaction log), VM snapshot, AD/LDAP export, EDR/AV signature
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c4">
+        <label for="c4">
+          Cập nhật Asset Inventory & CMDB (OT + IT): serial number, firmware version, IP, vendor support end-date
+          <span class="desc new-item">→ Kiểm tra EOL/EOS của thiết bị (rất quan trọng 2026)</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c5">
+        <label for="c5">
+          Lên lịch downtime & thông báo trước 10–21 ngày (Production, Quality, Safety, Maintenance, Vendor)
+          <span class="desc">Tính Production Loss Impact ($/giờ) + Opportunity Cost + Penalty contract (nếu có)</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c6">
+        <label for="c6">
+          <span class="new-item">Test change trên môi trường Staging/Sandbox (Digital Twin nếu có)</span>
+          <span class="desc">FAT/SAT lại nếu nâng cấp lớn</span>
+        </label>
+      </div>
+    </div>
   </div>
 
   <!-- 2 -->
   <div class="card">
-    <h2>2️⃣ Phạm vi & môi trường</h2>
-    <ul>
-      <li><input type="checkbox">Xác định nâng UI/UX hay Logic</li>
-      <li><input type="checkbox">Có thay đổi Database Schema</li>
-      <li><input type="checkbox">Nâng Contract hay chỉ Frontend</li>
-      <li><input type="checkbox">Ảnh hưởng user online</li>
-      <li><input type="checkbox">Chuẩn bị Dev / Staging / Testnet</li>
-      <li><input type="checkbox">Test UI Mobile & Desktop</li>
-    </ul>
+    <div class="card-header">
+      <h2>2. An toàn lao động & Lockout/Tagout (LOTO) – Zero Energy State</h2>
+      <span class="badge badge-danger">AN TOÀN TUYỆT ĐỐI</span>
+    </div>
+    <div class="list">
+      <div class="item">
+        <input type="checkbox" id="c7">
+        <label for="c7">Thực hiện LOTO toàn bộ: điện, khí nén, thủy lực, hơi, hóa chất, cơ khí (valve, guard...)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c8">
+        <label for="c8">Xác nhận Zero Energy bằng multimeter + non-contact voltage tester (Phase 1 & Phase 2)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c9">
+        <label for="c9">Mỗi người tham gia treo thẻ LOTO cá nhân + khóa riêng (Group LOTO nếu nhiều người)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c10">
+        <label for="c10">Kiểm tra confined space permit, hot work permit, height work nếu cần</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c11">
+        <label for="c11">
+          <span class="new-item">Kiểm tra PPE đầy đủ: arc-flash suit nếu medium/high voltage</span>
+        </label>
+      </div>
+    </div>
   </div>
 
   <!-- 3 -->
   <div class="card">
-    <h2>3️⃣ Thông báo & kiểm soát truy cập</h2>
-    <ul>
-      <li><input type="checkbox">Bật Maintenance Page</li>
-      <li><input type="checkbox">Disable đăng nhập / giao dịch / ghi dữ liệu</li>
-      <li><input type="checkbox">Ẩn nút submit / chặn ghi Firebase</li>
-      <li><input type="checkbox">Thông báo thời gian bảo trì cho user</li>
-      <li><input type="checkbox">Cam kết an toàn dữ liệu</li>
-    </ul>
+    <div class="card-header">
+      <h2>3. Thực thi bảo trì / nâng cấp (Execution Phase)</h2>
+      <span class="badge badge-warning">THỰC HIỆN CẨN THẬN</span>
+    </div>
+    <div class="list">
+      <div class="item">
+        <input type="checkbox" id="c12">
+        <label for="c12">Chỉ bypass interlock/safety khi đã LOTO & có phép đặc biệt từ Safety Manager</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c13">
+        <label for="c13">Nâng cấp firmware/software đúng version đã pass FAT/SAT + Vendor certified patch list</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c14">
+        <label for="c14">Áp dụng patch OT theo whitelist (chỉ patch vendor recommend + test trước)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c15">
+        <label for="c15">Kiểm tra lại network segmentation (Purdue Level 0-3.5, Zone & Conduit, DMZ)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c16">
+        <label for="c16">Không kết nối OT ra Internet hoặc IT network không cần thiết trong quá trình nâng cấp</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c17">
+        <label for="c17">
+          <span class="new-item">Kích hoạt logging mode chi tiết (syslog, Windows Event, PLC event log) trước khi bắt đầu</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c18">
+        <label for="c18">
+          <span class="new-item">Thực hiện theo nguyên tắc 4-eyes (ít nhất 2 kỹ sư kiểm tra mỗi bước critical)</span>
+        </label>
+      </div>
+    </div>
   </div>
 
   <!-- 4 -->
   <div class="card">
-    <h2>4️⃣ Blockchain / Token / Contract <span class="badge">WEB3</span></h2>
-    <ul>
-      <li><input type="checkbox">KHÔNG sửa contract đã deploy</li>
-      <li><input type="checkbox">KHÔNG renounce ownership sớm</li>
-      <li><input type="checkbox">Dùng Proxy (Upgradeable)</li>
-      <li><input type="checkbox">Hoặc deploy contract mới + migrate</li>
-      <li><input type="checkbox">Kiểm tra mint / burn / bridge</li>
-    </ul>
-  </div>
-
-  <!-- 5 -->
-  <div class="card">
-    <h2>5️⃣ Post-check & Go Live</h2>
-    <ul>
-      <li><input type="checkbox">Test login / CRUD / API / Contract</li>
-      <li><input type="checkbox">Kiểm tra Firebase rules & quyền truy cập</li>
-      <li><input type="checkbox">Gỡ Maintenance Mode</li>
-      <li><input type="checkbox">Theo dõi error / hiệu năng / user</li>
-      <li><input type="checkbox">Ghi nhận lỗi & bài học</li>
-    </ul>
+    <div class="card-header">
+      <h2>4. Commissioning, Validation & Handover</h2>
+      <span class="badge badge-success">HOÀN THÀNH & GIÁM SÁT</span>
+    </div>
+    <div class="list">
+      <div class="item">
+        <input type="checkbox" id="c19">
+        <label for="c19">Thực hiện dry-run → wet-run → full speed dần dần (bắt đầu 20-30-50-80-100%)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c20">
+        <label for="c20">Kiểm tra toàn bộ: alarm, interlock, ESD, safety relay, E-stop, light curtain</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c21">
+        <label for="c21">Verify data integrity & sync: Historian, MES report, ERP production order, IIoT sensor</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c22">
+        <label for="c22">Test full rollback/fallback plan (nếu có sự cố trong 24h đầu)</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c23">
+        <label for="c23">Gỡ LOTO theo trình tự → Production & Maintenance ký biên bản handover</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c24">
+        <label for="c24">Theo dõi hyper-care 48–96h: lỗi hệ thống, OEE, năng lượng tiêu thụ, nhiệt độ thiết bị</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c25">
+        <label for="c25">
+          <span class="new-item">Cập nhật tài liệu: as-built drawing, SOP mới, training record cho operator</span>
+        </label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="c26">
+        <label for="c26">
+          <span class="new-item">Post-implementation review (PIR) sau 1-2 tuần: lessons learned & cập nhật risk register</span>
+        </label>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <div class="footer">
-  ✔ Checklist lưu tự động · Phù hợp Web · Firebase · Blockchain · ERC20
+  Checklist chuyên sâu cho nhà máy lớn • IT/OT • IIoT • Zero Trust • Tuân thủ IEC 62443, ISA-95, NIST CSF 2.0, ISO 27001:2022 • Lưu tiến độ tự động trên trình duyệt • Phiên bản 2026
 </div>
 
 <script>
-const boxes = document.querySelectorAll("input[type=checkbox]");
-boxes.forEach((box,i)=>{
-  box.checked = localStorage.getItem("ck_"+i)==="1";
-  box.addEventListener("change",()=>{
-    localStorage.setItem("ck_"+i, box.checked?"1":"0");
+  document.querySelectorAll('input[type="checkbox"]').forEach((box, i) => {
+    const key = `factory_checklist_2026_${i}`;
+    box.checked = localStorage.getItem(key) === "1";
+    box.addEventListener("change", () => {
+      localStorage.setItem(key, box.checked ? "1" : "0");
+    });
   });
-});
 </script>
-
 </body>
 </html>
