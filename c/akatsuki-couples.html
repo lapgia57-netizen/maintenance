@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Akatsuki Couples ✦ Naruto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --card: #161616;
+      --text: #e0e0e0;
+      --accent: #c1121f;
+      --accent-dark: #8a0a14;
+      --border: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(193,18,31,0.08) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(193,18,31,0.06) 0%, transparent 30%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 3rem;
+      color: var(--accent);
+      margin: 1.5em 0 0.5em;
+      text-shadow: 0 0 15px rgba(193,18,31,0.4);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin: 2.5em 0 1em;
+      border-bottom: 2px solid var(--accent-dark);
+      padding-bottom: 0.4em;
+      display: inline-block;
+    }
+
+    .section-intro {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 2.5em;
+      color: #bbb;
+    }
+
+    .pairing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3em;
+    }
+
+    .pair-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pair-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(193,18,31,0.15);
+      border-color: var(--accent);
+    }
+
+    .pair-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent), transparent);
+    }
+
+    .pair-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.6em;
+      color: white;
+    }
+
+    .pair-desc {
+      color: #ccc;
+      font-size: 0.98rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(193,18,31,0.25);
+      color: #ff9999;
+      padding: 0.25em 0.7em;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      margin-right: 0.5em;
+      margin-top: 0.8em;
+    }
+
+    .highlight {
+      color: #ff9999;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4em;
+      padding: 2em 0;
+      color: #555;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.4rem; }
+      .pairing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Akatsuki Couples ✦</h1>
+    <p class="section-intro">Tất cả các cặp đôi nổi bật trong Akatsuki – từ canon pairing đến những ship được fandom yêu thích nhất</p>
+
+    <h2>1. Cặp đôi chính thức (Canon Pairing – Đồng đội định mệnh)</h2>
+    <div class="pairing-grid">
+      <div class="pair-card">
+        <div class="pair-name">Pain (Nagato) × Konan</div>
+        <p class="pair-desc">Cặp đôi thân thiết nhất, gần như gia đình. <span class="highlight">Konan trung thành tuyệt đối</span> với Nagato.</p>
+        <span class="tag">Thân thiết nhất</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Itachi Uchiha × Kisame Hoshigaki</div>
+        <p class="pair-desc">Cặp đôi "cool ngầu" và mạnh nhất về mặt chiến đấu. Kisame rất tôn trọng Itachi.</p>
+        <span class="tag">Mạnh nhất</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Deidara × Sasori</div>
+        <p class="pair-desc">Cặp đôi "nghệ thuật" kinh điển. Cãi nhau suốt nhưng phối hợp cực ăn ý.</p>
+        <span class="tag">Nghệ thuật</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Hidan × Kakuzu</div>
+        <p class="pair-desc">Cặp đôi "zombie" bất tử + keo kiệt. Cãi lộn kinh điển, Kisame gọi là <span class="highlight">"cặp đôi bất tử"</span>.</p>
+        <span class="tag">Toxic</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Obito (Tobi) × Black Zetsu</div>
+        <p class="pair-desc">Cặp đôi bí mật đứng sau mọi chuyện.</p>
+        <span class="tag">Bóng tối</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Orochimaru × Itachi (ngắn hạn)</div>
+        <p class="pair-desc">Orochimaru từng ghép đôi với Itachi một thời gian ngắn... rồi bị "dạy dỗ" nên bỏ chạy.</p>
+        <span class="tag">Drama</span>
+      </div>
+    </div>
+
+    <h2>2. Cặp đôi Fanon – Ship phổ biến nhất</h2>
+    <div class="pairing-grid">
+      <div class="pair-card">
+        <div class="pair-name">Yahiko × Konan</div>
+        <p class="pair-desc"><span class="highlight">Top 1 ship buồn nhất</span> Akatsuki – couple thanh mai trúc mã đầy tiếc nuối.</p>
+        <span class="tag">Buồn nhất</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Deidara × Sasori (SasoDei)</div>
+        <p class="pair-desc">Ship yaoi phổ biến nhất trong Akatsuki – "nghệ thuật tình yêu".</p>
+        <span class="tag">Top Yaoi</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Hidan × Kakuzu (KakuHida)</div>
+        <p class="pair-desc">"Toxic nhưng cute" – cãi nhau nhưng không rời nhau được.</p>
+        <span class="tag">Toxic Cute</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Obito × Rin</div>
+        <p class="pair-desc">Classic tragic ship – nguyên nhân Obito đen hóa.</p>
+        <span class="tag">Bi kịch</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Itachi × Kisame (KisaIta)</div>
+        <p class="pair-desc">Ship yaoi khá phổ biến nhờ sự tôn trọng lẫn nhau.</p>
+        <span class="tag">Tôn trọng</span>
+      </div>
+
+      <div class="pair-card">
+        <div class="pair-name">Obito × Deidara (TobiDei)</div>
+        <p class="pair-desc">Meme vui thời Tobi giả ngốc.</p>
+        <span class="tag">Meme</span>
+      </div>
+    </div>
+
+    <footer>
+      Akatsuki forever ✦ • Made with dark energy • 2026
+    </footer>
+  </div>
+</body>
+</html>
