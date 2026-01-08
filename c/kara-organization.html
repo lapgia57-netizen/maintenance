@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kara Organization - Boruto</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #e0e0e0;
+      --accent: #00ff9d;
+      --accent-dark: #00cc7a;
+      --card: #1a1a1a;
+      --border: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0,255,157,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0,255,157,0.06) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(0,255,157,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,255,157,0.15);
+    }
+
+    .section-title {
+      position: relative;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    ul.members {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .member-item {
+      background: rgba(0,255,157,0.08);
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0,255,157,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .member-item:hover {
+      background: rgba(0,255,157,0.15);
+      transform: scale(1.03);
+    }
+
+    .member-name {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    .current-status {
+      border-left: 4px solid var(--accent);
+      padding-left: 1.2rem;
+      margin: 2rem 0;
+      background: rgba(0,255,157,0.04);
+    }
+
+    .question {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kara Organization</h1>
+    <p class="intro">(Kara – nghĩa đen: "vỏ" hoặc "husk")</p>
+
+    <div class="card">
+      <h2 class="section-title">Tổng quan</h2>
+      <p>
+        Tổ chức Kara là một tổ chức ngầm <span class="highlight">bí ẩn và cực kỳ nguy hiểm</span> trong series 
+        <strong>Boruto: Naruto Next Generations</strong> (và phần tiếp theo <strong>Boruto: Two Blue Vortex</strong>).<br>
+        Thường được so sánh với <strong>Akatsuki</strong> trong Naruto, Kara là tổ chức phản diện chính ở giai đoạn đầu của Boruto.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Nguồn gốc & Mục đích</h2>
+      <p>
+        Được thành lập và lãnh đạo bởi <strong>Jigen</strong> (thực chất là vật chứa của <strong>Isshiki Ōtsutsuki</strong>).<br><br>
+        <strong>Mục tiêu chính:</strong>
+      </p>
+      <ul>
+        <li>Tìm kiếm và chuẩn bị <strong>vật chứa (vessel)</strong> phù hợp để Otsutsuki hồi sinh qua dấu ấn <strong>Karma</strong>.</li>
+        <li>Thu hoạch <strong>trái Chakra (Chakra Fruit)</strong> bằng cách trồng <strong>Cây Thần (God Tree)</strong>.</li>
+        <li>Sử dụng khoa học tiên tiến, công cụ ninja cấm kỵ và thí nghiệm trên con người (cấy Karma vào trẻ em).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Cơ cấu tổ chức</h2>
+      <p>Kara được chia thành hai nhóm chính:</p>
+      <ul>
+        <li><strong>Inner</strong> (Nội bộ): Thành viên cấp cao, gần gũi thủ lĩnh, thường có <strong>hình xăm số La Mã</strong> trên mặt.</li>
+        <li><strong>Outer</strong> (Ngoại bang): Thành viên hỗ trợ, hoạt động bên ngoài.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Thành viên nổi bật (giai đoạn đầu)</h2>
+      <ul class="members">
+        <li class="member-item"><span class="member-name">Jigen / Isshiki Ōtsutsuki</span>→ Thủ lĩnh thực sự</li>
+        <li class="member-item"><span class="member-name">Delta</span>→ Cyborg mạnh mẽ, hấp thụ & phản đòn</li>
+        <li class="member-item"><span class="member-name">Boro</span>→ Khổng lồ với khả năng tái tạo siêu tốc</li>
+        <li class="member-item"><span class="member-name">Kashin Koji</span>→ Clone của Jiraiya, sau phản bội</li>
+        <li class="member-item"><span class="member-name">Amado</span>→ Nhà khoa học thiên tài, sau đào tẩu sang Konoha</li>
+        <li class="member-item"><span class="member-name">Code</span>→ Thành viên mạnh nhất còn sót lại, sở hữu White Karma</li>
+        <li class="member-item"><span class="member-name">Kawaki</span>→ "Vật chứa" số 9, sau được Naruto nhận nuôi</li>
+      </ul>
+    </div>
+
+    <div class="card current-status">
+      <h2 class="section-title">Tình trạng hiện tại (Boruto: Two Blue Vortex – 2026)</h2>
+      <p>
+        Sau cái chết của Isshiki và sự tan rã của phần lớn Inner, Kara gần như <strong>sụp đổ</strong> ở phần 1.<br><br>
+        Tuy nhiên, <strong>Code</strong> đã tiếp quản và tái cấu trúc tổ chức thành phiên bản mới, tập trung vào:
+      </p>
+      <ul>
+        <li><strong>Eida (Ada)</strong> → Cyborg với khả năng thao túng nhận thức (Omnipotence)</li>
+        <li><strong>Daemon</strong> → Em trai Eida, khả năng phản đòn cực mạnh</li>
+        <li>Các <strong>Claw Grime</strong> (bản sao quái vật từ Ten-Tails)</li>
+      </ul>
+      <p style="margin-top: 1.5rem;">
+        Hiện tại trong manga <strong>Two Blue Vortex</strong> (đang ra mắt hàng tháng), Kara không còn là tổ chức lớn có cấu trúc rõ ràng như xưa, mà trở thành lực lượng cá nhân hơn, xoay quanh <strong>Code</strong> – người kế thừa ý chí Otsutsuki.
+      </p>
+    </div>
+
+    <div class="question card">
+      <p><strong>Bạn đang theo dõi manga đến chapter nào rồi?</strong> 😈</p>
+    </div>
+  </div>
+</body>
+</html>
