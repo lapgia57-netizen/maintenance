@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiểm soát Thông tin Mạng tại Việt Nam 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #004d99;
+      --primary-dark: #003366;
+      --accent: #ff6b00;
+      --light-bg: #f8fbff;
+      --text: #1a2a44;
+      --gray: #5f728c;
+      --success: #28a745;
+      --warning: #e67e22;
+      --danger: #dc3545;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f8fbff, #e9f0f9);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px 15px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 77, 153, 0.12);
+      border: 1px solid rgba(0, 77, 153, 0.1);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 65px 35px 55px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: "AN NINH MẠNG";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-12deg);
+      font-size: 7.5rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.09);
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+      white-space: nowrap;
+    }
+
+    .title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.9rem;
+      margin-bottom: 14px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.45);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .content {
+      padding: 45px 40px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.85rem;
+      margin: 50px 0 25px;
+      border-left: 5px solid var(--accent);
+      padding-left: 15px;
+    }
+
+    .highlight-box {
+      background: linear-gradient(90deg, #e9f3ff, #d9eaff);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      padding: 25px 30px;
+      margin: 30px 0;
+      font-size: 1.08rem;
+    }
+
+    .law-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      border: 1px solid #e0e7f5;
+      transition: all 0.3s;
+    }
+
+    .law-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,77,153,0.12);
+    }
+
+    .law-title {
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 35px 0;
+      font-size: 1.02rem;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      border: 1px solid #d9e2f0;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8fbff;
+    }
+
+    .new-2026 {
+      background: rgba(40, 167, 69, 0.12);
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .tip-list {
+      list-style: none;
+      margin: 30px 0;
+    }
+
+    .tip-list li {
+      padding: 14px 0 14px 35px;
+      position: relative;
+      font-size: 1.05rem;
+    }
+
+    .tip-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-size: 1.3rem;
+    }
+
+    .conclusion {
+      text-align: center;
+      font-size: 1.45rem;
+      color: var(--primary);
+      margin: 55px 0 40px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--gray);
+      font-style: italic;
+      margin: 40px 0 20px;
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 640px) {
+      .title-main { font-size: 2.4rem; }
+      .content { padding: 35px 25px; }
+      .header { padding: 55px 25px 45px; }
+      .comparison-table th, .comparison-table td { padding: 12px 15px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 class="title-main">KIỂM SOÁT THÔNG TIN MẠNG VIỆT NAM 2026</h1>
+    <p class="subtitle">Khung pháp lý mới – Thách thức AI, Deepfake & Chuyển đổi số</p>
+  </div>
+
+  <div class="content">
+    <h2>Khung pháp lý chính hiện hành (đầu năm 2026)</h2>
+
+    <div class="law-card">
+      <div class="law-title">Luật An ninh mạng 2018</div>
+      Vẫn hiệu lực đến 30/6/2026<br>
+      Tập trung chống thông tin chống Nhà nước, xuyên tạc lịch sử, tin giả cơ bản...
+    </div>
+
+    <div class="law-card" style="border-left: 5px solid var(--accent);">
+      <div class="law-title">Luật An ninh mạng 2025 (116/2025/QH15)</div>
+      <strong>Thông qua 10/12/2025 – Hiệu lực từ 1/7/2026</strong><br><br>
+      • Mở rộng cấm deepfake, AI lừa đảo, nghe lén, thu thập dữ liệu cá nhân trái phép<br>
+      • Nền tảng xuyên biên giới phải đặt đại diện pháp lý tại Việt Nam<br>
+      • Bộ Công an thống nhất chỉ huy<br>
+      • Nội luật hóa Công ước Hà Nội chống tội phạm mạng
+    </div>
+
+    <div class="law-card">
+      <div class="law-title">Luật Bảo vệ dữ liệu cá nhân 2025</div>
+      Hiệu lực từ 1/1/2026<br>
+      • Cấm yêu cầu CCCD/hộ chiếu để xác thực tài khoản<br>
+      • Cấm nghe lén, đọc tin nhắn riêng tư (trừ trường hợp pháp luật cho phép)<br>
+      • Người dùng có quyền xóa, từ chối theo dõi dữ liệu
+    </div>
+
+    <h2>So sánh trước và sau 2026</h2>
+
+    <table class="comparison-table">
+      <tr>
+        <th>Tiêu chí</th>
+        <th>Trước 2026 (Luật cũ)</th>
+        <th>Từ 2026 (Luật mới)</th>
+      </tr>
+      <tr>
+        <td>Phạm vi hành vi cấm</td>
+        <td>Tập trung chống Nhà nước, tin giả cơ bản</td>
+        <td class="new-2026">Mở rộng: deepfake, AI lừa đảo, dữ liệu cá nhân trái phép</td>
+      </tr>
+      <tr>
+        <td>Trách nhiệm nền tảng</td>
+        <td>Yêu cầu gỡ bỏ, phối hợp hạn chế</td>
+        <td class="new-2026">Bắt buộc đại diện pháp lý, cung cấp dữ liệu nhanh, kỹ thuật thời gian thực</td>
+      </tr>
+      <tr>
+        <td>Đầu mối quản lý</td>
+        <td>Phân tán giữa các bộ</td>
+        <td class="new-2026">Bộ Công an thống nhất chỉ huy</td>
+      </tr>
+      <tr>
+        <td>Bảo vệ dữ liệu cá nhân</td>
+        <td>Chưa chi tiết</td>
+        <td class="new-2026">Rất chặt chẽ từ 1/1/2026</td>
+      </tr>
+    </table>
+
+    <h2>Lời khuyên cho người dùng mạng</h2>
+    <ul class="tip-list">
+      <li>Kiểm chứng thông tin từ nhiều nguồn uy tín trước khi chia sẻ</li>
+      <li>Không đăng tải nội dung nhạy cảm, sai sự thật để tránh rủi ro pháp lý</li>
+      <li>Bảo vệ dữ liệu cá nhân: mật khẩu mạnh, xác thực 2 lớp, hạn chế chia sẻ thông tin riêng tư</li>
+    </ul>
+
+    <div class="conclusion">
+      Việt Nam đang xây dựng môi trường mạng<br>
+      vừa an toàn, an ninh – vừa bảo vệ quyền lợi cá nhân<br>
+      trong kỷ nguyên số và AI.
+    </div>
+
+    <div class="footer-note">
+      Cân bằng giữa an ninh quốc gia và tự do ngôn luận luôn là bài toán lớn.<br>
+      Nếu bạn cần tìm hiểu sâu hơn về deepfake, trách nhiệm nền tảng hay bất kỳ khía cạnh nào, cứ hỏi nhé!
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
