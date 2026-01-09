@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trái Tim Của Mọi Trái Tim - Thông tin Chính phủ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #c8102e;
+      --red-dark: #a00d24;
+      --gold: #ffd700;
+      --gold-dark: #d4a017;
+      --bg: #fffef5;
+      --text: #1a0f00;
+      --light-bg: #fff8e8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #fffef5, #fff5e1);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 20px 15px;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(200,16,46,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 85% 80%, rgba(255,215,0,0.07) 0%, transparent 60%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.14);
+      border: 1px solid rgba(200,16,46,0.12);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: white;
+      padding: 80px 35px 65px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: "🇻🇳";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-12deg);
+      font-size: 12rem;
+      opacity: 0.12;
+      pointer-events: none;
+      font-weight: bold;
+    }
+
+    .title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 16px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      font-size: 1.35rem;
+      opacity: 0.94;
+      font-weight: 400;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .content {
+      padding: 50px 40px;
+    }
+
+    .quote-block {
+      background: linear-gradient(135deg, #fff8e8, #fff0d5);
+      border-left: 6px solid var(--red);
+      border-radius: 12px;
+      padding: 35px 40px;
+      margin: 40px 0;
+      font-size: 1.22rem;
+      font-style: italic;
+      position: relative;
+      box-shadow: 0 6px 25px rgba(200,16,46,0.12);
+    }
+
+    .quote-block::before,
+    .quote-block::after {
+      content: '“';
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: rgba(200,16,46,0.18);
+      position: absolute;
+      line-height: 1;
+    }
+
+    .quote-block::before {
+      top: -10px;
+      left: 15px;
+    }
+
+    .quote-block::after {
+      bottom: -30px;
+      right: 25px;
+      transform: scaleX(-1);
+    }
+
+    .author {
+      text-align: right;
+      font-weight: 700;
+      color: var(--red-dark);
+      margin-top: 25px;
+      font-size: 1.1rem;
+      font-style: normal;
+    }
+
+    .highlight {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .heart-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      color: var(--red);
+      margin: 60px 0 30px;
+      letter-spacing: 2px;
+      text-shadow: 0 3px 10px rgba(200,16,46,0.25);
+    }
+
+    .heart-subtitle {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #c8102e;
+      font-weight: 700;
+      margin-bottom: 40px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .emojis {
+      text-align: center;
+      font-size: 3.5rem;
+      margin: 30px 0 50px;
+      letter-spacing: 20px;
+    }
+
+    .decoration-line {
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold), var(--red), var(--gold), transparent);
+      margin: 45px 0;
+    }
+
+    @media (max-width: 680px) {
+      .title-main { font-size: 2.6rem; }
+      .heart-title { font-size: 2.5rem; }
+      .heart-subtitle { font-size: 1.5rem; }
+      .content { padding: 40px 25px; }
+      .header { padding: 60px 25px 50px; }
+      .quote-block { padding: 28px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 class="title-main">ĐIỂM SÁNG TRUYỀN THÔNG CHÍNH PHỦ</h1>
+    <p class="subtitle">Tận tụy – Trách nhiệm – Luôn đồng hành cùng nhịp sống người dân</p>
+  </div>
+
+  <div class="content">
+    <p style="font-size:1.18rem; text-align:center; margin-bottom:40px; color:#444; font-weight:500;">
+      Đặc biệt ấn tượng và xúc động trước tinh thần làm việc tận tụy, trách nhiệm của những người làm truyền thông Chính phủ – không chỉ gói gọn trong giờ hành chính mà luôn sẵn sàng làm việc bất kể thời gian, đồng hành cùng nhịp sống và hơi thở của người dân.
+    </p>
+
+    <div class="quote-block">
+      Thông tin Chính phủ đã trở thành một <span class="highlight">điểm sáng</span> trong công tác truyền thông chính sách.<br><br>
+
+      Việc đa dạng hóa các kênh thông tin đã giúp thông tin được lan tỏa nhanh chóng, kịp thời, đáp ứng hiệu quả nhu cầu của người dân, nhất là trong những giai đoạn khẩn cấp.<br><br>
+
+      Thông qua các kênh thông tin chính thống như Thông tin Chính phủ, tinh thần tương thân tương ái, nghĩa đồng bào của dân tộc Việt Nam được khơi dậy và phát huy mạnh mẽ...<br><br>
+
+      <span style="display:block; margin:25px 0;"></span>
+
+      Với những người làm công tác Mặt trận, Cổng Thông tin điện tử Chính phủ – Báo Điện tử Chính phủ và <strong>Thông tin Chính phủ</strong> thực sự là điểm tựa tin cậy...
+    </div>
+
+    <div class="author">
+      Đồng chí Võ Thị Minh Sinh<br>
+      Phó Bí thư Tỉnh ủy, Chủ tịch Ủy ban MTTQ tỉnh Nghệ An,<br>
+      Trưởng đoàn đại biểu Quốc hội tỉnh Nghệ An
+    </div>
+
+    <div class="decoration-line"></div>
+
+    <h2 class="heart-title">“TRÁI TIM CỦA MỌI TRÁI TIM”</h2>
+    
+    <p class="heart-subtitle">
+      Trong công tác an sinh xã hội – Sợi dây kết nối những tấm lòng vàng vì cộng đồng
+    </p>
+
+    <div class="emojis">
+      😍 💞 💛
+    </div>
+
+    <p style="text-align:center; font-size:1.25rem; color:#c8102e; font-weight:600; margin-top:30px;">
+      Lan tỏa nhanh nhất – kịp thời nhất<br>
+      đến đồng bào trong nước, kiều bào ở nước ngoài và bạn bè quốc tế
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
