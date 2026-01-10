@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TÀU NGẦM - SỨC MẠNH THẦM LẶNG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
+            --bg: #05070d;
+            --card-bg: rgba(12, 22, 45, 0.68);
+            --primary: #00d4ff;
+            --primary-glow: #00d4ff88;
+            --accent: #00ffea;
+            --danger: #ff2a6d;
+            --text: #e0f7ff;
+            --text-muted: #88c7ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(0,212,255,0.09) 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, rgba(0,255,234,0.07) 0%, transparent 60%);
+            background-attachment: fixed;
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 5rem 0 3.5rem;
+        }
+
+        .main-title {
+            font-size: 4.6rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            background: linear-gradient(90deg, #00d4ff, #00ffea, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px var(--primary-glow);
+            margin-bottom: 0.6rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin: 3.5rem 0 1.6rem;
+            padding-bottom: 0.9rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), transparent);
+            bottom: -4px;
+            left: 0;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0,212,255,0.22);
+            border-radius: 14px;
+            padding: 2.2rem;
+            margin-bottom: 2.8rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.65),
+                        inset 0 0 25px rgba(0,212,255,0.09);
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.75),
+                        inset 0 0 35px rgba(0,212,255,0.14);
+            border-color: rgba(0,212,255,0.45);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0,255,234,0.5);
+        }
+
+        .vietnam-fleet {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+            margin: 2.2rem 0;
+        }
+
+        .sub-item {
+            background: rgba(8, 18, 38, 0.75);
+            border: 1px solid rgba(0,212,255,0.18);
+            border-radius: 10px;
+            padding: 1.4rem;
+            text-align: center;
+            transition: all 0.35s;
+        }
+
+        .sub-item:hover {
+            background: rgba(15, 35, 70, 0.85);
+            border-color: var(--primary);
+            transform: scale(1.04);
+            box-shadow: 0 0 20px rgba(0,212,255,0.25);
+        }
+
+        .sub-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0.9rem 0 0.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.2rem;
+            margin: 3rem 0;
+        }
+
+        .vs-box {
+            background: rgba(10, 25, 55, 0.65);
+            border: 2px solid;
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vs-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.04), transparent);
+            pointer-events: none;
+        }
+
+        .nuclear { border-color: var(--danger); }
+        .diesel  { border-color: var(--primary); }
+
+        .vs-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg);
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .nuclear .vs-label { color: var(--danger); }
+        .diesel  .vs-label { color: var(--primary); }
+
+        .quote-box {
+            text-align: center;
+            font-size: 1.45rem;
+            font-style: italic;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,212,255,0.3);
+            border-bottom: 1px solid rgba(0,212,255,0.3);
+            margin: 4rem 0 2rem;
+        }
+
+        .quote-author {
+            color: var(--primary);
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 1.2rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 3.4rem; letter-spacing: 6px; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="main-title">TÀU NGẦM</h1>
+        <p class="subtitle">SỨC MẠNH THẦM LẶNG DƯỚI ĐẠI DƯƠNG</p>
+    </header>
+
+    <div class="content-card">
+        <h2 class="section-title"><i class="fas fa-water"></i> LỊCH SỬ NGẮN GỌN</h2>
+        <p>
+            Tàu ngầm đầu tiên được thử nghiệm từ thế kỷ 17 bởi <span class="highlight">Cornelis Drebbel</span> 
+            (thuyền gỗ hình quả trứng chèo tay trên sông Thames).
+        </p>
+        <p>
+            Đến <span class="highlight">Thế chiến II</span>, tàu ngầm thực sự trở thành <span class="highlight">"sát thủ thầm lặng"</span> của đại dương.
+        </p>
+        <p>
+            Ngày nay: tàng hình âm học cực cao, tên lửa đạn đạo xuyên lục địa, lặn liên tục hàng tháng (tàu hạt nhân).
+        </p>
+    </div>
+
+    <div class="content-card">
+        <h2 class="section-title"><i class="fas fa-ship"></i> TÀU NGẦM HẢI QUÂN VIỆT NAM</h2>
+        <p>
+            Việt Nam sở hữu <span class="highlight">6 tàu ngầm Kilo-class (dự án 636/636MV)</span> do Nga chế tạo – 
+            biệt danh <span class="highlight">"Hố Đen" (Black Hole)</span> nhờ tàng hình âm học xuất sắc.
+        </p>
+
+        <div class="vietnam-fleet">
+            <div class="sub-item"><div class="sub-name">HQ-182</div>Hà Nội</div>
+            <div class="sub-item"><div class="sub-name">HQ-183</div>TP. Hồ Chí Minh</div>
+            <div class="sub-item"><div class="sub-name">HQ-184</div>Hải Phòng</div>
+            <div class="sub-item"><div class="sub-name">HQ-185</div>Đà Nẵng</div>
+            <div class="sub-item"><div class="sub-name">HQ-186</div>Khánh Hòa</div>
+            <div class="sub-item"><div class="sub-name">HQ-187</div>Bà Rịa - Vũng Tàu</div>
+        </div>
+
+        <p style="margin-top: 2rem;">
+            Trang bị ngư lôi, tên lửa chống hạm <span class="highlight">Club-S</span> (có khả năng đánh đất liền) — 
+            vũ khí chiến lược then chốt ở <span class="highlight">Biển Đông</span>.
+        </p>
+    </div>
+
+    <div class="content-card">
+        <h2 class="section-title"><i class="fas fa-skull-crossbones"></i> CÁC "QUÁI VẬT" TÀU NGẦM NỔI BẬT 2026</h2>
+        <ul style="list-style:none; padding-left:0; font-size:1.15rem;">
+            <li><strong>Lớp Virginia (Mỹ)</strong> — Tàu tấn công hạt nhân đa năng bậc nhất</li>
+            <li><strong>Lớp Yasen-M (Nga)</strong> — Tên lửa siêu thanh Zircon, cực kỳ nguy hiểm</li>
+            <li><strong>Lớp A26 Blekinge (Thụy Điển)</strong> — Thế hệ 5 đầu tiên, siêu êm, AIP tiên tiến</li>
+            <li>Lớp Ohio (Mỹ) & Lớp Borei (Nga) — Tàu mang tên lửa đạn đạo khổng lồ</li>
+        </ul>
+    </div>
+
+    <div class="comparison">
+        <div class="vs-box nuclear">
+            <div class="vs-label">TÀU NGẦM HẠT NHÂN</div>
+            <h3>ƯU ĐIỂM</h3>
+            <p>Lặn liên tục vài tháng<br>Tốc độ cao liên tục<br>Sức mạnh áp đảo</p>
+            <h3 style="margin-top:2rem;color:#ff9999">NHƯỢC ĐIỂM</h3>
+            <p>Kích thước lớn<br>Chi phí cực cao<br>Độ ồn cao hơn khi tốc độ cao</p>
+        </div>
+
+        <div class="vs-box diesel">
+            <div class="vs-label">TÀU NGẦM DIESEL-ĐIỆN</div>
+            <h3>ƯU ĐIỂM</h3>
+            <p>Siêu êm khi chạy chậm<br>Chi phí thấp hơn nhiều<br>Phù hợp vùng nước nông</p>
+            <h3 style="margin-top:2rem;color:#99ddff">NHƯỢC ĐIỂM</h3>
+            <p>Phải nổi lên sạc pin định kỳ<br>Thời gian lặn hạn chế<br>Tầm hoạt động ngắn hơn</p>
+        </div>
+    </div>
+
+    <div class="quote-box">
+        "Trong chiến tranh dưới nước, kẻ bị phát hiện trước... thường là kẻ thua cuộc."
+        <span class="quote-author">— Nguyên tắc bất di bất dịch của chiến tranh tàu ngầm</span>
+    </div>
+</div>
+
+</body>
+</html>
