@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý URL Firebase - Đã từng mở</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        /* Form thêm URL */
+        .add-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        .form-title i {
+            color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-view {
+            background: #28a745;
+            color: white;
+        }
+
+        /* Bảng danh sách URL */
+        .url-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .url-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 3px solid #e0e0e0;
+        }
+
+        .url-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        .url-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .url-cell {
+            max-width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Modal chỉnh sửa */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        /* Loading và thông báo */
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+
+        .loading i {
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            border-left: 4px solid #28a745;
+        }
+
+        .toast.error {
+            border-left: 4px solid #dc3545;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Stats cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-card i {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .stat-card .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Tìm kiếm */
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #e0e0e0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .url-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-fire"></i> Quản lý URL Firebase</h1>
+            <p>Quản lý các URL đã từng mở - CRUD với Firebase Realtime Database</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Stats Cards -->
+            <div class="stats-container" id="statsContainer">
+                <div class="stat-card">
+                    <i class="fas fa-link"></i>
+                    <div class="stat-value" id="totalUrls">0</div>
+                    <div class="stat-label">Tổng số URL</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <div class="stat-value" id="totalViews">0</div>
+                    <div class="stat-label">Lượt mở</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-value" id="todayUrls">0</div>
+                    <div class="stat-label">Hôm nay</div>
+                </div>
+            </div>
+
+            <!-- Form thêm URL mới -->
+            <div class="add-form">
+                <div class="form-title">
+                    <i class="fas fa-plus-circle"></i>
+                    <h3>Thêm URL mới</h3>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-link"></i> URL:</label>
+                    <input type="url" id="urlInput" placeholder="https://example.com" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-tag"></i> Tiêu đề:</label>
+                    <input type="text" id="titleInput" placeholder="Tiêu đề của URL" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-align-left"></i> Mô tả:</label>
+                    <textarea id="descInput" placeholder="Mô tả ngắn về URL..."></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="addUrl()">
+                    <i class="fas fa-save"></i> Lưu URL
+                </button>
+            </div>
+
+            <!-- Tìm kiếm -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm URL hoặc tiêu đề..." onkeyup="filterUrls()">
+                <button onclick="filterUrls()"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Bảng danh sách URL -->
+            <table class="url-table" id="urlTable">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tiêu đề</th>
+                        <th>URL</th>
+                        <th>Mô tả</th>
+                        <th>Lượt mở</th>
+                        <th>Lần cuối mở</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="urlList">
+                    <tr>
+                        <td colspan="8" class="loading">
+                            <i class="fas fa-spinner fa-spin"></i> Đang tải dữ liệu...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal chỉnh sửa -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Chỉnh sửa URL</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-link"></i> URL:</label>
+                <input type="url" id="editUrlInput" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-tag"></i> Tiêu đề:</label>
+                <input type="text" id="editTitleInput" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-align-left"></i> Mô tả:</label>
+                <textarea id="editDescInput"></textarea>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="updateUrl()">
+                    <i class="fas fa-save"></i> Cập nhật
+                </button>
+                <button class="btn btn-delete" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Hủy
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast thông báo -->
+    <div class="toast" id="toast">
+        <i class="fas" id="toastIcon"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            databaseURL: "https://khoanchitrongngay-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        // Khởi tạo Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const urlsRef = database.ref('urls');
+
+        // Biến toàn cục
+        let currentEditId = null;
+        let urlsData = [];
+
+        // Hiển thị toast thông báo
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toast.className = 'toast show ' + type;
+            toastMessage.textContent = message;
+            toastIcon.className = 'fas ' + (type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Format ngày tháng
+        function formatDate(timestamp) {
+            if (!timestamp) return 'Chưa mở';
+            const date = new Date(timestamp);
+            return date.toLocaleString('vi-VN');
+        }
+
+        // Thêm URL mới
+        function addUrl() {
+            const url = document.getElementById('urlInput').value.trim();
+            const title = document.getElementById('titleInput').value.trim();
+            const description = document.getElementById('descInput').value.trim();
+
+            if (!url || !title) {
+                showToast('Vui lòng nhập URL và tiêu đề!', 'error');
+                return;
+            }
+
+            // Kiểm tra URL hợp lệ
+            try {
+                new URL(url);
+            } catch (e) {
+                showToast('URL không hợp lệ!', 'error');
+                return;
+            }
+
+            const newUrl = {
+                url: url,
+                title: title,
+                description: description || '',
+                views: 0,
+                lastOpened: null,
+                status: 'active',
+                createdAt: firebase.database.ServerValue.TIMESTAMP,
+                updatedAt: firebase.database.ServerValue.TIMESTAMP
+            };
+
+            urlsRef.push(newUrl)
+                .then(() => {
+                    showToast('Thêm URL thành công!');
+                    document.getElementById('urlInput').value = '';
+                    document.getElementById('titleInput').value = '';
+                    document.getElementById('descInput').value = '';
+                })
+                .catch(error => {
+                    showToast('Lỗi: ' + error.message, 'error');
+                });
+        }
+
+        // Đọc dữ liệu từ Firebase
+        urlsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            const urlList = document.getElementById('urlList');
+            
+            if (!data) {
+                urlList.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 30px;">Chưa có dữ liệu</td></tr>';
+                updateStats({});
+                return;
+            }
+
+            // Chuyển đổi dữ liệu
+            urlsData = Object.entries(data).map(([id, value]) => ({
+                id: id,
+                ...value
+            }));
+
+            // Sắp xếp theo thời gian tạo mới nhất
+            urlsData.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+            // Hiển thị dữ liệu
+            displayUrls(urlsData);
+            
+            // Cập nhật thống kê
+            updateStats(data);
+        });
+
+        // Hiển thị danh sách URL
+        function displayUrls(urls) {
+            const urlList = document.getElementById('urlList');
+            
+            if (urls.length === 0) {
+                urlList.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 30px;">Không tìm thấy URL nào</td></tr>';
+                return;
+            }
+
+            urlList.innerHTML = urls.map((item, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${escapeHtml(item.title || 'Không tiêu đề')}</td>
+                    <td class="url-cell">
+                        <a href="${escapeHtml(item.url)}" target="_blank" title="${escapeHtml(item.url)}">
+                            ${escapeHtml(item.url)}
+                        </a>
+                    </td>
+                    <td>${escapeHtml(item.description || '')}</td>
+                    <td>${item.views || 0}</td>
+                    <td>${formatDate(item.lastOpened)}</td>
+                    <td>
+                        <span class="status-badge ${item.status === 'active' ? 'status-active' : 'status-inactive'}">
+                            ${item.status === 'active' ? 'Hoạt động' : 'Không hoạt động'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view" onclick="openUrl('${item.id}')" title="Mở URL">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-edit" onclick="editUrl('${item.id}')" title="Chỉnh sửa">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-delete" onclick="deleteUrl('${item.id}')" title="Xóa">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Escape HTML để tránh XSS
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Lọc URL theo từ khóa
+        function filterUrls() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                displayUrls(urlsData);
+                return;
+            }
+
+            const filtered = urlsData.filter(item => 
+                (item.title && item.title.toLowerCase().includes(searchTerm)) ||
+                (item.url && item.url.toLowerCase().includes(searchTerm)) ||
+                (item.description && item.description.toLowerCase().includes(searchTerm))
+            );
+            
+            displayUrls(filtered);
+        }
+
+        // Cập nhật thống kê
+        function updateStats(data) {
+            if (!data) {
+                document.getElementById('totalUrls').textContent = '0';
+                document.getElementById('totalViews').textContent = '0';
+                document.getElementById('todayUrls').textContent = '0';
+                return;
+            }
+
+            const urls = Object.values(data);
+            const totalUrls = urls.length;
+            const totalViews = urls.reduce((sum, item) => sum + (item.views || 0), 0);
+            
+            // Đếm URL được tạo hôm nay
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const todayUrls = urls.filter(item => {
+                if (!item.createdAt) return false;
+                const createdDate = new Date(item.createdAt);
+                return createdDate >= today;
+            }).length;
+
+            document.getElementById('totalUrls').textContent = totalUrls;
+            document.getElementById('totalViews').textContent = totalViews;
+            document.getElementById('todayUrls').textContent = todayUrls;
+        }
+
+        // Mở URL
+        function openUrl(id) {
+            const urlData = urlsData.find(item => item.id === id);
+            if (urlData && urlData.url) {
+                // Cập nhật lượt mở
+                const updates = {
+                    views: (urlData.views || 0) + 1,
+                    lastOpened: firebase.database.ServerValue.TIMESTAMP
+                };
+                
+                urlsRef.child(id).update(updates)
+                    .then(() => {
+                        window.open(urlData.url, '_blank');
+                    })
+                    .catch(error => {
+                        showToast('Lỗi cập nhật lượt mở: ' + error.message, 'error');
+                        window.open(urlData.url, '_blank');
+                    });
+            }
+        }
+
+        // Mở modal chỉnh sửa
+        function editUrl(id) {
+            const urlData = urlsData.find(item => item.id === id);
+            if (urlData) {
+                currentEditId = id;
+                document.getElementById('editUrlInput').value = urlData.url || '';
+                document.getElementById('editTitleInput').value = urlData.title || '';
+                document.getElementById('editDescInput').value = urlData.description || '';
+                document.getElementById('editModal').classList.add('active');
+            }
+        }
+
+        // Đóng modal
+        function closeModal() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditId = null;
+        }
+
+        // Cập nhật URL
+        function updateUrl() {
+            if (!currentEditId) return;
+
+            const url = document.getElementById('editUrlInput').value.trim();
+            const title = document.getElementById('editTitleInput').value.trim();
+            const description = document.getElementById('editDescInput').value.trim();
+
+            if (!url || !title) {
+                showToast('Vui lòng nhập URL và tiêu đề!', 'error');
+                return;
+            }
+
+            // Kiểm tra URL hợp lệ
+            try {
+                new URL(url);
+            } catch (e) {
+                showToast('URL không hợp lệ!', 'error');
+                return;
+            }
+
+            const updates = {
+                url: url,
+                title: title,
+                description: description,
+                updatedAt: firebase.database.ServerValue.TIMESTAMP
+            };
+
+            urlsRef.child(currentEditId).update(updates)
+                .then(() => {
+                    showToast('Cập nhật thành công!');
+                    closeModal();
+                })
+                .catch(error => {
+                    showToast('Lỗi: ' + error.message, 'error');
+                });
+        }
+
+        // Xóa URL
+        function deleteUrl(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa URL này?')) {
+                urlsRef.child(id).remove()
+                    .then(() => {
+                        showToast('Xóa URL thành công!');
+                    })
+                    .catch(error => {
+                        showToast('Lỗi: ' + error.message, 'error');
+                    });
+            }
+        }
+
+        // Đóng modal khi click bên ngoài
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Xử lý phím ESC để đóng modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
