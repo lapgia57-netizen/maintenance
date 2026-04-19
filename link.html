@@ -14,12 +14,10 @@
             --blue-dark: #1976D2;
             --red: #f44336;
             --red-dark: #d32f2f;
+            --star: #FFC107;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -35,6 +33,18 @@
             font-size: 1.8rem;
         }
 
+        .login-container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .app-container { display: none; }
+
         .form-container {
             background-color: white;
             padding: 16px;
@@ -46,7 +56,7 @@
             gap: 12px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="password"] {
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -62,17 +72,11 @@
             transition: all 0.2s;
         }
 
-        #addBtn {
-            background-color: var(--primary);
-            color: white;
-        }
+        #addBtn { background-color: var(--primary); color: white; }
         #addBtn:hover { background-color: var(--primary-dark); }
+        #loginBtn { background-color: var(--purple); color: white; width: 100%; }
 
-        .link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        .link-list { list-style: none; padding: 0; margin: 0; }
 
         .link-item {
             background-color: white;
@@ -104,6 +108,18 @@
             font-size: 1.1em;
         }
 
+        .star-btn {
+            background: none;
+            border: none;
+            font-size: 1.4em;
+            cursor: pointer;
+            padding: 4px 8px;
+            color: #ddd;
+        }
+        .star-btn.starred {
+            color: var(--star);
+        }
+
         .link-text {
             flex: 1;
             color: #1e88e5;
@@ -113,35 +129,10 @@
             word-break: break-all;
             padding: 6px 10px;
             border-radius: 6px;
-            position: relative;
             transition: background 0.2s;
         }
 
-        .link-text:hover {
-            background-color: #e3f2fd;
-        }
-
-        .link-text::after {
-            content: "Copied!";
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            z-index: 10;
-        }
-
-        .link-text.copied::after {
-            opacity: 1;
-        }
+        .link-text:hover { background-color: #e3f2fd; }
 
         .actions {
             display: flex;
@@ -150,7 +141,7 @@
         }
 
         .actions button {
-            flex: 1 1 80px;          /* Cho phép wrap và chiếm không gian hợp lý */
+            flex: 1 1 80px;
             min-width: 80px;
         }
 
@@ -162,77 +153,48 @@
         .edit-btn:hover   { background-color: var(--blue-dark); }
         .delete-btn:hover { background-color: var(--red-dark); }
 
-        /* Desktop / Tablet lớn hơn ~600px */
         @media (min-width: 600px) {
-            body {
-                padding: 24px;
-                max-width: 900px;
-                margin: 0 auto;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .form-container {
-                flex-direction: row;
-                padding: 20px;
-                gap: 12px;
-            }
-
-            input[type="text"] {
-                flex: 1;
-            }
-
-            #addBtn {
-                padding: 12px 32px;
-            }
-
-            .link-item {
-                flex-direction: row;
-                align-items: center;
-                padding: 14px 18px;
-                gap: 16px;
-            }
-
-            .item-header {
-                flex: 1;
-                gap: 16px;
-            }
-
-            .link-text {
-                font-size: 16px;
-            }
-
-            .actions {
-                flex-wrap: nowrap;
-                gap: 8px;
-            }
-
-            .actions button {
-                flex: 0 0 auto;
-                padding: 10px 16px;
-                min-width: 70px;
-            }
+            body { padding: 24px; max-width: 900px; margin: 0 auto; }
+            h1 { font-size: 2.2rem; }
+            .form-container { flex-direction: row; padding: 20px; gap: 12px; }
+            input[type="text"] { flex: 1; }
+            #addBtn { padding: 12px 32px; }
+            .link-item { flex-direction: row; align-items: center; padding: 14px 18px; gap: 16px; }
+            .item-header { flex: 1; gap: 16px; }
+            .actions { flex-wrap: nowrap; }
+            .actions button { flex: 0 0 auto; padding: 10px 16px; min-width: 70px; }
         }
     </style>
 </head>
 <body>
-    <h1>Important Links Manager</h1>
-    
-    <div class="form-container">
-        <input type="text" id="linkInput" placeholder="Paste or enter important link here...">
-        <button id="addBtn">Add Link</button>
+
+    <!-- Phần Login -->
+    <div id="loginScreen" class="login-container">
+        <h1>🔐 Đăng nhập</h1>
+        <p>Important Links Manager</p>
+        <input type="text" id="username" placeholder="Tên đăng nhập" value="okx"><br><br>
+        <input type="password" id="password" placeholder="Mật khẩu" value="1"><br><br>
+        <button id="loginBtn">Đăng nhập</button>
+        <p style="margin-top:15px; font-size:14px; color:#666;">Tài khoản mặc định:<br><strong>okx</strong> / <strong>1</strong></p>
     </div>
-    
-    <ul id="linkList" class="link-list"></ul>
+
+    <!-- Phần chính của ứng dụng (ẩn ban đầu) -->
+    <div id="appScreen" class="app-container">
+        <h1>Important Links Manager</h1>
+        
+        <div class="form-container">
+            <input type="text" id="linkInput" placeholder="Paste or enter important link here...">
+            <button id="addBtn">Add Link</button>
+        </div>
+        
+        <ul id="linkList" class="link-list"></ul>
+    </div>
 
     <script type="module">
-        // Import Firebase SDK
+        // ==================== FIREBASE CONFIG ====================
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-        // ──────────────── THAY BẰNG CONFIG CỦA BẠN ────────────────
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
             authDomain: "project-doidoi-default-rtdb.firebaseapp.com",
@@ -247,23 +209,65 @@
         const db = getDatabase(app);
         const linksRef = ref(db, 'links');
 
+        // ==================== LOGIN ====================
+        const loginScreen = document.getElementById('loginScreen');
+        const appScreen = document.getElementById('appScreen');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+
+        function checkLogin() {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                loginScreen.style.display = 'none';
+                appScreen.style.display = 'block';
+            }
+        }
+
+        loginBtn.addEventListener('click', () => {
+            const user = usernameInput.value.trim();
+            const pass = passwordInput.value.trim();
+
+            if (user === "okx" && pass === "1") {
+                localStorage.setItem('isLoggedIn', 'true');
+                loginScreen.style.display = 'none';
+                appScreen.style.display = 'block';
+            } else {
+                alert("❌ Sai tên đăng nhập hoặc mật khẩu!\n\nTài khoản mặc định: okx / 1");
+            }
+        });
+
+        // Kiểm tra login khi load trang
+        checkLogin();
+
+        // ==================== MAIN APP ====================
         const linkInput = document.getElementById('linkInput');
         const addBtn = document.getElementById('addBtn');
         const linkList = document.getElementById('linkList');
 
-        // Hiển thị danh sách links
+        // Hiển thị danh sách links (có sắp xếp theo starred)
         onValue(linksRef, (snapshot) => {
             linkList.innerHTML = '';
-            let index = 1;
+            let links = [];
 
             snapshot.forEach((childSnapshot) => {
                 const id = childSnapshot.key;
-                const { url } = childSnapshot.val();
+                const data = childSnapshot.val();
+                links.push({ id, ...data });
+            });
 
+            // Sắp xếp: Starred lên đầu, sau đó theo thứ tự thêm
+            links.sort((a, b) => {
+                if (a.starred && !b.starred) return -1;
+                if (!a.starred && b.starred) return 1;
+                return 0;
+            });
+
+            let index = 1;
+
+            links.forEach(link => {
                 const li = document.createElement('li');
                 li.className = 'link-item';
 
-                // Header (index + link text)
                 const header = document.createElement('div');
                 header.className = 'item-header';
 
@@ -271,22 +275,24 @@
                 indexSpan.className = 'index-number';
                 indexSpan.textContent = `${index}.`;
 
+                const starBtn = document.createElement('button');
+                starBtn.className = `star-btn ${link.starred ? 'starred' : ''}`;
+                starBtn.innerHTML = link.starred ? '⭐' : '☆';
+                starBtn.onclick = () => toggleStar(link.id, link.starred);
+
                 const linkEl = document.createElement('div');
                 linkEl.className = 'link-text';
-                linkEl.textContent = url;
+                linkEl.textContent = link.url;
                 linkEl.title = "Click để copy link";
 
                 linkEl.addEventListener('click', () => {
-                    navigator.clipboard.writeText(url).then(() => {
+                    navigator.clipboard.writeText(link.url).then(() => {
                         linkEl.classList.add('copied');
                         setTimeout(() => linkEl.classList.remove('copied'), 1800);
-                    }).catch(err => {
-                        console.error('Copy thất bại:', err);
-                        alert('Không thể copy link');
                     });
                 });
 
-                header.append(indexSpan, linkEl);
+                header.append(indexSpan, starBtn, linkEl);
 
                 // Actions
                 const actions = document.createElement('div');
@@ -295,17 +301,17 @@
                 const openBtn = document.createElement('button');
                 openBtn.className = 'open-btn';
                 openBtn.textContent = 'Mở';
-                openBtn.onclick = () => window.open(url, '_blank');
+                openBtn.onclick = () => window.open(link.url, '_blank');
 
                 const editBtn = document.createElement('button');
                 editBtn.className = 'edit-btn';
                 editBtn.textContent = 'Edit';
-                editBtn.onclick = () => editLink(id, url);
+                editBtn.onclick = () => editLink(link.id, link.url);
 
                 const deleteBtn = document.createElement('button');
                 deleteBtn.className = 'delete-btn';
                 deleteBtn.textContent = 'Delete';
-                deleteBtn.onclick = () => deleteLink(id);
+                deleteBtn.onclick = () => deleteLink(link.id);
 
                 actions.append(openBtn, editBtn, deleteBtn);
 
@@ -316,16 +322,28 @@
             });
         });
 
+        // Thêm link
         addBtn.addEventListener('click', () => {
             const url = linkInput.value.trim();
             if (url) {
-                push(linksRef, { url });
+                push(linksRef, { 
+                    url: url,
+                    starred: false 
+                });
                 linkInput.value = '';
             } else {
                 alert('Vui lòng nhập link hợp lệ');
             }
         });
 
+        // Toggle gắn sao
+        function toggleStar(id, currentStar) {
+            update(ref(db, 'links/' + id), { 
+                starred: !currentStar 
+            });
+        }
+
+        // Edit link
         window.editLink = (id, oldUrl) => {
             const newUrl = prompt('Sửa link:', oldUrl);
             if (newUrl && newUrl !== oldUrl && newUrl.trim()) {
@@ -333,6 +351,7 @@
             }
         };
 
+        // Xóa link
         window.deleteLink = (id) => {
             if (confirm('Xác nhận xóa link này?')) {
                 remove(ref(db, 'links/' + id));
