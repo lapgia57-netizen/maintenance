@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý URL Firebase - Đã từng mở</title>
-    <!-- Firebase SDKs -->
+    <title>Quản lý URL</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,214 +21,227 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ==================== LOGIN ==================== */
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .login-card {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        /* === LOGIN PAGE === */
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        .login-container h1 {
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .form-group input {
+            padding: 40px 25px;
             width: 100%;
-            padding: 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1em;
+            max-width: 380px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
-        .form-group input:focus {
+        .login-card h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .login-card p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px; /* Quan trọng cho mobile */
+        }
+
+        .input-group input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+            border-color: var(--primary);
         }
 
         .btn-login {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), #764ba2);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
         }
 
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        /* ==================== MAIN APP ==================== */
+        .main-app {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            border-radius: 0;
         }
 
-        /* Phần giao diện chính (giữ nguyên code cũ) */
-        .main-app { display: none; }
-
         .header {
-            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            background: linear-gradient(135deg, var(--primary), #5a67d8);
             color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
         .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
-            color: white;
+            background: rgba(255,255,255,0.25);
             border: none;
+            color: white;
+            padding: 8px 14px;
             border-radius: 8px;
-            cursor: pointer;
+            font-size: 0.95rem;
         }
 
         .main-content {
-            padding: 30px;
+            padding: 20px;
         }
 
-        /* Giữ nguyên tất cả CSS cũ từ .add-form trở xuống */
-        .add-form, .stats-container, .search-box, .url-table, .modal, .toast {
-            /* ... giữ nguyên như code cũ của bạn ... */
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        /* Copy toàn bộ CSS cũ của bạn từ đây trở xuống */
+        .stat-card {
+            background: #f8f9fa;
+            padding: 16px 14px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        /* Form thêm URL */
         .add-form {
             background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
         }
 
-        .form-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+        .add-form h3 {
+            margin-bottom: 18px;
             color: #333;
-            font-size: 1.3em;
-        }
-
-        .form-title i {
-            color: #667eea;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1em;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .btn-edit { background: #ffc107; color: #000; }
-        .btn-delete { background: #dc3545; color: white; }
-        .btn-view { background: #28a745; color: white; }
+        .form-group {
+            margin-bottom: 16px;
+        }
 
-        .url-table {
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
         }
 
-        .url-table th {
-            background: #f8f9fa;
-            padding: 15px;
-            text-align: left;
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        /* Danh sách URL - Card trên mobile */
+        .url-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .url-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .url-card .title {
             font-weight: 600;
-            color: #555;
-            border-bottom: 3px solid #e0e0e0;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: #222;
         }
 
-        .url-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
+        .url-card .url {
+            font-size: 0.9rem;
+            color: var(--primary);
+            word-break: break-all;
+            margin-bottom: 8px;
+        }
+
+        .url-card .desc {
+            font-size: 0.9rem;
             color: #666;
+            margin-bottom: 12px;
         }
 
-        .url-table tr:hover {
-            background: #f5f5f5;
-        }
-
-        .url-cell {
-            max-width: 250px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        .url-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 12px;
         }
 
         .action-buttons {
@@ -234,401 +250,325 @@
             flex-wrap: wrap;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
+        .action-buttons button {
+            flex: 1;
+            min-width: 80px;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .status-active { background: #d4edda; color: #155724; }
-        .status-inactive { background: #f8d7da; color: #721c24; }
-
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
             align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .modal.active { display: flex; }
+        .modal.active {
+            display: flex;
+        }
 
         .modal-content {
             background: white;
             border-radius: 20px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 420px;
+            padding: 24px;
         }
 
         .toast {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 1100;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 12px;
             display: none;
             align-items: center;
             gap: 10px;
+            z-index: 3000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 90%;
         }
 
         .toast.show { display: flex; }
-        .toast.success { border-left: 4px solid #28a745; }
-        .toast.error { border-left: 4px solid #dc3545; }
 
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .main-app { border-radius: 20px; margin: 20px auto; min-height: auto; }
+            .url-list { display: none; }
+            .url-table { display: table; width: 100%; }
+            /* Bạn có thể giữ bảng trên desktop nếu muốn */
+        }
+
+        @media (max-width: 480px) {
+            .main-content { padding: 15px; }
+            .add-form { padding: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== LOGIN PAGE ==================== -->
-    <div class="login-container" id="loginPage">
-        <h1><i class="fas fa-fire"></i> Quản lý URL</h1>
-        <p style="margin-bottom: 30px; color: #666;">Đăng nhập để tiếp tục</p>
-        
-        <div class="form-group">
-            <label>Tên đăng nhập (Admin)</label>
-            <input type="text" id="username" placeholder="Nhập username" value="admin">
-        </div>
-        
-        <div class="form-group">
-            <label>Mật khẩu</label>
-            <input type="password" id="password" placeholder="Nhập mật khẩu">
-        </div>
+    <!-- LOGIN SCREEN -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <h1><i class="fas fa-fire"></i> Quản lý URL</h1>
+            <p>Đăng nhập quản trị viên</p>
 
-        <button class="btn-login" onclick="login()">
-            <i class="fas fa-sign-in-alt"></i> Đăng nhập
-        </button>
+            <div class="input-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" id="username" value="admin" placeholder="admin">
+            </div>
 
-        <p style="margin-top: 20px; font-size: 0.9em; color: #999;">
-            Mặc định: <strong>admin</strong> / <strong>admin123</strong>
-        </p>
+            <div class="input-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu">
+            </div>
+
+            <button class="btn-login" onclick="login()">
+                <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            </button>
+
+            <p style="text-align:center; margin-top:20px; font-size:0.9rem; color:#888;">
+                Mặc định: <strong>admin</strong> / <strong>admin123</strong>
+            </p>
+        </div>
     </div>
 
-    <!-- ==================== MAIN APPLICATION (ẩn ban đầu) ==================== -->
-    <div class="container main-app" id="mainApp">
+    <!-- MAIN APPLICATION -->
+    <div class="main-app" id="mainApp">
         <div class="header">
-            <h1><i class="fas fa-fire"></i> Quản lý URL Firebase</h1>
-            <p>Quản lý các URL đã từng mở - CRUD với Firebase Realtime Database</p>
+            <h1><i class="fas fa-link"></i> URL Manager</h1>
             <button class="logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                <i class="fas fa-sign-out-alt"></i> Thoát
             </button>
         </div>
 
         <div class="main-content">
-            <!-- Stats Cards -->
-            <div class="stats-container" id="statsContainer">
+            <!-- Stats -->
+            <div class="stats" id="statsContainer">
                 <div class="stat-card">
                     <i class="fas fa-link"></i>
                     <div class="stat-value" id="totalUrls">0</div>
-                    <div class="stat-label">Tổng số URL</div>
+                    <div>Tổng URL</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-eye"></i>
                     <div class="stat-value" id="totalViews">0</div>
-                    <div class="stat-label">Lượt mở</div>
+                    <div>Lượt mở</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-clock"></i>
                     <div class="stat-value" id="todayUrls">0</div>
-                    <div class="stat-label">Hôm nay</div>
+                    <div>Hôm nay</div>
                 </div>
             </div>
 
-            <!-- Form thêm URL mới -->
+            <!-- Add Form -->
             <div class="add-form">
-                <div class="form-title">
-                    <i class="fas fa-plus-circle"></i>
-                    <h3>Thêm URL mới</h3>
+                <h3><i class="fas fa-plus-circle"></i> Thêm URL mới</h3>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="url" id="urlInput" placeholder="https://example.com">
                 </div>
                 <div class="form-group">
-                    <label><i class="fas fa-link"></i> URL:</label>
-                    <input type="url" id="urlInput" placeholder="https://example.com" required>
+                    <label>Tiêu đề</label>
+                    <input type="text" id="titleInput" placeholder="Tiêu đề URL">
                 </div>
                 <div class="form-group">
-                    <label><i class="fas fa-tag"></i> Tiêu đề:</label>
-                    <input type="text" id="titleInput" placeholder="Tiêu đề của URL" required>
+                    <label>Mô tả</label>
+                    <textarea id="descInput" placeholder="Mô tả ngắn..."></textarea>
                 </div>
-                <div class="form-group">
-                    <label><i class="fas fa-align-left"></i> Mô tả:</label>
-                    <textarea id="descInput" placeholder="Mô tả ngắn về URL..."></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="addUrl()">
+                <button class="btn-login" onclick="addUrl()" style="background: #28a745;">
                     <i class="fas fa-save"></i> Lưu URL
                 </button>
             </div>
 
-            <!-- Tìm kiếm -->
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Tìm kiếm URL hoặc tiêu đề..." onkeyup="filterUrls()">
-                <button onclick="filterUrls()"><i class="fas fa-search"></i></button>
-            </div>
-
-            <!-- Bảng danh sách URL -->
-            <table class="url-table" id="urlTable">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tiêu đề</th>
-                        <th>URL</th>
-                        <th>Mô tả</th>
-                        <th>Lượt mở</th>
-                        <th>Lần cuối mở</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody id="urlList">
-                    <tr>
-                        <td colspan="8" class="loading">
-                            <i class="fas fa-spinner fa-spin"></i> Đang tải dữ liệu...
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- Danh sách dưới dạng Card (tối ưu mobile) -->
+            <div class="url-list" id="urlList"></div>
         </div>
     </div>
 
-    <!-- Modal chỉnh sửa (giữ nguyên) -->
+    <!-- Modal Edit -->
     <div class="modal" id="editModal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2><i class="fas fa-edit"></i> Chỉnh sửa URL</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3 style="margin-bottom:20px;"><i class="fas fa-edit"></i> Chỉnh sửa URL</h3>
+            <div class="form-group">
+                <label>URL</label>
+                <input type="url" id="editUrlInput">
             </div>
             <div class="form-group">
-                <label><i class="fas fa-link"></i> URL:</label>
-                <input type="url" id="editUrlInput" required>
+                <label>Tiêu đề</label>
+                <input type="text" id="editTitleInput">
             </div>
             <div class="form-group">
-                <label><i class="fas fa-tag"></i> Tiêu đề:</label>
-                <input type="text" id="editTitleInput" required>
-            </div>
-            <div class="form-group">
-                <label><i class="fas fa-align-left"></i> Mô tả:</label>
+                <label>Mô tả</label>
                 <textarea id="editDescInput"></textarea>
             </div>
-            <div style="display: flex; gap: 10px; justify-content: flex-end;">
-                <button class="btn btn-primary" onclick="updateUrl()">
-                    <i class="fas fa-save"></i> Cập nhật
-                </button>
-                <button class="btn btn-delete" onclick="closeModal()">
-                    <i class="fas fa-times"></i> Hủy
-                </button>
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <button onclick="updateUrl()" class="btn-login" style="flex:1; background:#667eea;">Cập nhật</button>
+                <button onclick="closeModal()" class="btn-login" style="flex:1; background:#dc3545;">Hủy</button>
             </div>
         </div>
     </div>
 
     <!-- Toast -->
     <div class="toast" id="toast">
-        <i class="fas" id="toastIcon"></i>
+        <i class="fas fa-check-circle" id="toastIcon"></i>
         <span id="toastMessage"></span>
     </div>
 
     <script>
-        // ==================== CẤU HÌNH LOGIN ====================
-        const ADMIN_USERNAME = "admin";
-        const ADMIN_PASSWORD = "admin123";   // ← Bạn có thể đổi mật khẩu ở đây
+        // Config
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "admin123";
 
-        let isLoggedIn = false;
+        let urlsRef, urlsData = [], currentEditId = null;
 
+        // Login
         function login() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value;
 
-            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                isLoggedIn = true;
-                document.getElementById('loginPage').style.display = 'none';
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('mainApp').style.display = 'block';
-                initFirebase();        // Khởi tạo Firebase sau khi login
-                showToast('Đăng nhập thành công!', 'success');
+                initFirebase();
+                showToast("Đăng nhập thành công!", "success");
             } else {
-                showToast('Tên đăng nhập hoặc mật khẩu không đúng!', 'error');
+                showToast("Sai tên đăng nhập hoặc mật khẩu!", "error");
             }
         }
 
         function logout() {
-            if (confirm('Bạn có chắc muốn đăng xuất?')) {
-                isLoggedIn = false;
+            if (confirm("Đăng xuất?")) {
                 document.getElementById('mainApp').style.display = 'none';
-                document.getElementById('loginPage').style.display = 'block';
+                document.getElementById('loginScreen').style.display = 'flex';
                 document.getElementById('password').value = '';
             }
         }
 
-        // ==================== FIREBASE & CÁC CHỨC NĂNG CŨ ====================
-        let database, urlsRef, urlsData = [];
-        let currentEditId = null;
-
+        // Firebase
         function initFirebase() {
             const firebaseConfig = {
                 databaseURL: "https://khoanchitrongngay-default-rtdb.asia-southeast1.firebasedatabase.app/"
             };
 
             firebase.initializeApp(firebaseConfig);
-            database = firebase.database();
-            urlsRef = database.ref('urls');
+            urlsRef = firebase.database().ref('urls');
 
-            // Lắng nghe dữ liệu
-            urlsRef.on('value', (snapshot) => {
+            urlsRef.on('value', snapshot => {
                 const data = snapshot.val();
-                const urlList = document.getElementById('urlList');
+                urlsData = data ? Object.entries(data).map(([id, val]) => ({id, ...val})) : [];
+                urlsData.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
                 
-                if (!data) {
-                    urlList.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 30px;">Chưa có dữ liệu</td></tr>';
-                    updateStats({});
-                    return;
-                }
-
-                urlsData = Object.entries(data).map(([id, value]) => ({ id: id, ...value }));
-                urlsData.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-
-                displayUrls(urlsData);
-                updateStats(data);
+                renderUrlCards();
+                updateStats(data || {});
             });
         }
 
-        function showToast(message, type = 'success') {
+        function showToast(msg, type = 'success') {
             const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toastMessage');
-            const toastIcon = document.getElementById('toastIcon');
-            
-            toast.className = `toast show ${type}`;
-            toastMessage.textContent = message;
-            toastIcon.className = `fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`;
-            
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            document.getElementById('toastMessage').textContent = msg;
+            document.getElementById('toastIcon').className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            toast.style.display = 'flex';
+            setTimeout(() => toast.style.display = 'none', 2800);
         }
 
-        function formatDate(timestamp) {
-            if (!timestamp) return 'Chưa mở';
-            const date = new Date(timestamp);
-            return date.toLocaleString('vi-VN');
+        function formatDate(ts) {
+            return ts ? new Date(ts).toLocaleString('vi-VN') : 'Chưa mở';
         }
 
-        function escapeHtml(text) {
-            if (!text) return '';
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Các hàm CRUD giữ nguyên như cũ
-        function addUrl() { /* ... giữ nguyên code cũ ... */ 
+        function addUrl() {
             const url = document.getElementById('urlInput').value.trim();
             const title = document.getElementById('titleInput').value.trim();
-            const description = document.getElementById('descInput').value.trim();
+            const desc = document.getElementById('descInput').value.trim();
 
-            if (!url || !title) return showToast('Vui lòng nhập URL và tiêu đề!', 'error');
+            if (!url || !title) return showToast("Vui lòng nhập URL và Tiêu đề", "error");
 
             try { new URL(url); } 
-            catch (e) { return showToast('URL không hợp lệ!', 'error'); }
+            catch { return showToast("URL không hợp lệ!", "error"); }
 
             const newUrl = {
-                url, title, description: description || '',
-                views: 0, lastOpened: null, status: 'active',
-                createdAt: firebase.database.ServerValue.TIMESTAMP,
-                updatedAt: firebase.database.ServerValue.TIMESTAMP
+                url, title, description: desc,
+                views: 0,
+                lastOpened: null,
+                createdAt: firebase.database.ServerValue.TIMESTAMP
             };
 
             urlsRef.push(newUrl)
                 .then(() => {
-                    showToast('Thêm URL thành công!');
+                    showToast("Thêm URL thành công!");
                     document.getElementById('urlInput').value = '';
                     document.getElementById('titleInput').value = '';
                     document.getElementById('descInput').value = '';
                 })
-                .catch(err => showToast('Lỗi: ' + err.message, 'error'));
+                .catch(err => showToast("Lỗi: " + err.message, "error"));
         }
 
-        function displayUrls(urls) {
-            const urlList = document.getElementById('urlList');
-            if (urls.length === 0) {
-                urlList.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 30px;">Không tìm thấy URL nào</td></tr>';
+        function renderUrlCards() {
+            const container = document.getElementById('urlList');
+            if (urlsData.length === 0) {
+                container.innerHTML = `<p style="text-align:center; padding:40px; color:#888;">Chưa có URL nào</p>`;
                 return;
             }
 
-            urlList.innerHTML = urls.map((item, index) => `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${escapeHtml(item.title || 'Không tiêu đề')}</td>
-                    <td class="url-cell">
-                        <a href="${escapeHtml(item.url)}" target="_blank">${escapeHtml(item.url)}</a>
-                    </td>
-                    <td>${escapeHtml(item.description || '')}</td>
-                    <td>${item.views || 0}</td>
-                    <td>${formatDate(item.lastOpened)}</td>
-                    <td>
-                        <span class="status-badge ${item.status === 'active' ? 'status-active' : 'status-inactive'}">
-                            ${item.status === 'active' ? 'Hoạt động' : 'Không hoạt động'}
-                        </span>
-                    </td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn btn-view" onclick="openUrl('${item.id}')" title="Mở URL"><i class="fas fa-external-link-alt"></i></button>
-                            <button class="btn btn-edit" onclick="editUrl('${item.id}')" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-delete" onclick="deleteUrl('${item.id}')" title="Xóa"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
+            container.innerHTML = urlsData.map(item => `
+                <div class="url-card">
+                    <div class="title">${item.title || 'Không tiêu đề'}</div>
+                    <div class="url"><a href="${item.url}" target="_blank">${item.url}</a></div>
+                    ${item.description ? `<div class="desc">${item.description}</div>` : ''}
+                    
+                    <div class="url-meta">
+                        <span><i class="fas fa-eye"></i> ${item.views || 0}</span>
+                        <span><i class="fas fa-clock"></i> ${formatDate(item.lastOpened)}</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button onclick="openUrl('${item.id}')" style="background:#28a745; color:white;">
+                            <i class="fas fa-external-link-alt"></i> Mở
+                        </button>
+                        <button onclick="editUrl('${item.id}')" style="background:#ffc107; color:black;">
+                            <i class="fas fa-edit"></i> Sửa
+                        </button>
+                        <button onclick="deleteUrl('${item.id}')" style="background:#dc3545; color:white;">
+                            <i class="fas fa-trash"></i> Xóa
+                        </button>
+                    </div>
+                </div>
             `).join('');
-        }
-
-        function filterUrls() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            if (!searchTerm) return displayUrls(urlsData);
-
-            const filtered = urlsData.filter(item =>
-                (item.title && item.title.toLowerCase().includes(searchTerm)) ||
-                (item.url && item.url.toLowerCase().includes(searchTerm)) ||
-                (item.description && item.description.toLowerCase().includes(searchTerm))
-            );
-            displayUrls(filtered);
-        }
-
-        function updateStats(data) {
-            if (!data) return;
-            const urls = Object.values(data);
-            document.getElementById('totalUrls').textContent = urls.length;
-            document.getElementById('totalViews').textContent = urls.reduce((sum, item) => sum + (item.views || 0), 0);
-            
-            const today = new Date(); today.setHours(0,0,0,0);
-            const todayCount = urls.filter(item => {
-                if (!item.createdAt) return false;
-                return new Date(item.createdAt) >= today;
-            }).length;
-            document.getElementById('todayUrls').textContent = todayCount;
         }
 
         function openUrl(id) {
             const item = urlsData.find(u => u.id === id);
             if (!item) return;
 
-            const updates = {
+            urlsRef.child(id).update({
                 views: (item.views || 0) + 1,
                 lastOpened: firebase.database.ServerValue.TIMESTAMP
-            };
-
-            urlsRef.child(id).update(updates)
-                .then(() => window.open(item.url, '_blank'))
-                .catch(() => window.open(item.url, '_blank'));
+            }).then(() => {
+                window.open(item.url, '_blank');
+            });
         }
 
         function editUrl(id) {
             const item = urlsData.find(u => u.id === id);
             if (!item) return;
+
             currentEditId = id;
             document.getElementById('editUrlInput').value = item.url || '';
             document.getElementById('editTitleInput').value = item.title || '';
@@ -638,50 +578,47 @@
 
         function updateUrl() {
             if (!currentEditId) return;
-            // ... (giữ nguyên code updateUrl cũ)
+
             const url = document.getElementById('editUrlInput').value.trim();
             const title = document.getElementById('editTitleInput').value.trim();
-            const description = document.getElementById('editDescInput').value.trim();
+            const desc = document.getElementById('editDescInput').value.trim();
 
-            if (!url || !title) return showToast('Vui lòng nhập URL và tiêu đề!', 'error');
+            if (!url || !title) return showToast("URL và Tiêu đề không được để trống", "error");
 
-            try { new URL(url); } 
-            catch (e) { return showToast('URL không hợp lệ!', 'error'); }
-
-            const updates = { url, title, description, updatedAt: firebase.database.ServerValue.TIMESTAMP };
-
-            urlsRef.child(currentEditId).update(updates)
-                .then(() => {
-                    showToast('Cập nhật thành công!');
-                    closeModal();
-                })
-                .catch(err => showToast('Lỗi: ' + err.message, 'error'));
+            urlsRef.child(currentEditId).update({
+                url, title, description: desc,
+                updatedAt: firebase.database.ServerValue.TIMESTAMP
+            }).then(() => {
+                showToast("Cập nhật thành công!");
+                closeModal();
+            }).catch(err => showToast("Lỗi: " + err.message, "error"));
         }
 
         function deleteUrl(id) {
-            if (confirm('Bạn có chắc chắn muốn xóa URL này?')) {
+            if (confirm("Xóa URL này?")) {
                 urlsRef.child(id).remove()
-                    .then(() => showToast('Xóa thành công!'))
-                    .catch(err => showToast('Lỗi: ' + err.message, 'error'));
+                    .then(() => showToast("Đã xóa URL"))
+                    .catch(err => showToast("Lỗi khi xóa", "error"));
             }
         }
 
         function closeModal() {
             document.getElementById('editModal').classList.remove('active');
-            currentEditId = null;
         }
 
-        // Đóng modal khi click ngoài hoặc nhấn ESC
-        window.onclick = function(event) {
-            if (event.target.id === 'editModal') closeModal();
-        };
+        function updateStats(data) {
+            const urls = Object.values(data);
+            document.getElementById('totalUrls').textContent = urls.length;
+            document.getElementById('totalViews').textContent = urls.reduce((sum, u) => sum + (u.views || 0), 0);
+            
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const todayCount = urls.filter(u => u.createdAt && new Date(u.createdAt) >= today).length;
+            document.getElementById('todayUrls').textContent = todayCount;
+        }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Cho phép Enter trong form login
-        document.getElementById('password').addEventListener('keypress', function(e) {
+        // Enter key cho login
+        document.getElementById('password').addEventListener('keypress', e => {
             if (e.key === 'Enter') login();
         });
     </script>
