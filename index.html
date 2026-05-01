@@ -1,142 +1,142 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hệ thống đang bảo trì</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống đang nâng cấp | 2026 Experience</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
-    :root {
-      --bg: #0f172a;
-      --primary: #3b82f6;
-      --text: #e2e8f0;
-      --text-light: #94a3b8;
-    }
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #020617;
+            overflow: hidden;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      color: var(--text);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
+        /* Hiệu ứng nền Mesh Gradient động */
+        .bg-mesh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            z-index: -1;
+        }
 
-    .container {
-      max-width: 600px;
-      animation: fadeIn 1.2s ease-out;
-    }
+        /* Glassmorphism card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
 
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        /* Hiệu ứng quét sáng (Shimmer) */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-    }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
 
-    .icon {
-      font-size: 5rem;
-      margin-bottom: 1.5rem;
-      animation: pulse 2s infinite;
-    }
+        .spin-slow {
+            animation: spin 8s linear infinite;
+        }
 
-    .countdown {
-      font-size: 1.1rem;
-      margin-top: 2rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    @media (max-width: 640px) {
-      h1 { font-size: 2.5rem; }
-      .icon { font-size: 4rem; }
-    }
-  </style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="icon">🔧</div>
-    <h1>Hệ thống đang bảo trì & nâng cấp</h1>
-    <p>
-      Chúng tôi đang thực hiện nâng cấp để mang đến trải nghiệm tốt hơn, an toàn hơn và nhanh hơn cho bạn.<br>
-      Rất xin lỗi vì sự bất tiện này!
-    </p>
-    <p>Thời gian hoàn thành: <strong>Chưa ấn định chính xác</strong><br>
-       Dự kiến sẽ sớm quay lại trong vài giờ tới.</p>
+<body class="flex items-center justify-center min-h-screen text-slate-200">
+    <div class="bg-mesh"></div>
 
-    <div class="countdown" id="countdown">
-      Vui lòng quay lại sau...
-    </div>
+    <main class="container max-w-2xl px-6">
+        <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            <div class="shimmer absolute inset-0 pointer-events-none"></div>
 
-    <footer>
-      © 2025 Tên công ty / dự án của bạn. Mọi thắc mắc xin liên hệ admin.
-    </footer>
-  </div>
+            <div class="relative flex justify-center mb-8">
+                <div class="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full"></div>
+                <div class="relative bg-slate-900/50 p-5 rounded-2xl border border-indigo-500/30">
+                    <i data-lucide="cpu" class="w-16 h-16 text-indigo-400 spin-slow"></i>
+                </div>
+            </div>
 
-  <script>
-    // Tùy chọn: hiển thị đồng hồ đếm ngược (ví dụ 4 tiếng nữa)
-    // Nếu không biết chính xác thời gian, có thể để thông báo như hiện tại
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+                Hệ Thống Đang Tiến Hóa
+            </h1>
+            
+            <p class="text-slate-400 text-lg leading-relaxed mb-8">
+                Chúng tôi đang triển khai hạ tầng mới để tăng tốc độ xử lý lên <span class="text-indigo-400 font-bold">200%</span>. 
+                Trải nghiệm của bạn sắp được nâng lên một tầm cao mới.
+            </p>
 
-    const countdownEl = document.getElementById('countdown');
+            <div class="grid grid-cols-2 gap-4 mb-10">
+                <div class="bg-slate-800/40 p-4 rounded-xl border border-white/5">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-1">
+                        <i data-lucide="clock-3" class="w-4 h-4"></i> Dự kiến
+                    </div>
+                    <div class="text-xl font-semibold text-white">~ 2 Giờ</div>
+                </div>
+                <div class="bg-slate-800/40 p-4 rounded-xl border border-white/5">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-1">
+                        <i data-lucide="activity" class="w-4 h-4"></i> Tiến độ
+                    </div>
+                    <div class="text-xl font-semibold text-emerald-400">85%</div>
+                </div>
+            </div>
 
-    // Nếu bạn muốn bật đồng hồ đếm ngược, bỏ comment 2 dòng dưới và đặt thời gian mong muốn
-    // const targetTime = new Date().getTime() + (4 * 60 * 60 * 1000); // +4 tiếng
-    // setInterval(() => updateCountdown(targetTime), 1000);
+            <div class="w-full bg-slate-800 rounded-full h-1.5 mb-8 overflow-hidden">
+                <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full w-[85%] transition-all duration-1000 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+            </div>
 
-    function updateCountdown(target) {
-      const now = new Date().getTime();
-      const distance = target - now;
+            <button onclick="location.reload()" class="group relative px-8 py-3 font-bold text-white transition-all duration-300">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl transition-all group-hover:scale-105 group-hover:rotate-1"></div>
+                <span class="relative flex items-center justify-center gap-2">
+                    Kiểm tra lại <i data-lucide="refresh-cw" class="w-4 h-4 group-hover:rotate-180 transition-transform duration-500"></i>
+                </span>
+            </button>
+        </div>
 
-      if (distance < 0) {
-        countdownEl.innerHTML = 'Hệ thống đã sẵn sàng! Đang tải lại trang...';
-        setTimeout(() => location.reload(), 3000);
-        return;
-      }
+        <footer class="mt-12 flex flex-col items-center gap-4">
+            <div class="flex gap-6 text-slate-500">
+                <a href="#" class="hover:text-indigo-400 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-indigo-400 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-indigo-400 transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+            <p class="text-sm text-slate-600 uppercase tracking-widest font-medium">
+                &copy; 2026 Next-Gen Project. Powered by AI infrastructure.
+            </p>
+        </footer>
+    </main>
 
-      const hours = Math.floor(distance / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <script>
+        // Khởi tạo Lucide Icons
+        lucide.createIcons();
 
-      countdownEl.innerHTML = `Dự kiến quay lại sau: ${hours}h ${minutes}p ${seconds}s`;
-    }
-
-    // Hiện tại để thông báo chung chung (vì chưa ấn định ngày hoàn thành)
-    countdownEl.innerHTML = 'Đang nỗ lực hoàn thành sớm nhất có thể...';
-  </script>
+        // Hiệu ứng di chuyển chuột nhẹ theo card (Parallax)
+        const card = document.querySelector('.glass-card');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    </script>
 </body>
-</html>
+                  </html>
+  
